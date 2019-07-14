@@ -30,6 +30,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QProcess>
 
 namespace Ui {
     class MainWindow;
@@ -42,8 +43,13 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_fetchButton_clicked();
+    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
+
 private:
     Ui::MainWindow *m_ui;
+    QProcess *m_process;
 };
 
 #endif // MAINWINDOW_H
