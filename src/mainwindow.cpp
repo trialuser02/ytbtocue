@@ -32,12 +32,16 @@
 #include <QJsonValue>
 #include <QRegularExpression>
 #include "mainwindow.h"
+#include "cuemodel.h"
+#include "utils.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     m_ui = new Ui::MainWindow;
     m_ui->setupUi(this);
+    m_model = new CueModel(this);
+    m_ui->treeView->setModel(m_model);
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(onFinished(int,QProcess::ExitStatus)));
     m_ui->urlEdit->setText("https://www.youtube.com/watch?v=9MolAvqXbzU");
@@ -53,7 +57,7 @@ void MainWindow::on_fetchButton_clicked()
     if(m_ui->urlEdit->text().isEmpty())
         return;
 
-    m_ui->tracksWidget->clear();
+    m_model->clear();
     QStringList args = { "-j", m_ui->urlEdit->text() };
     m_process->start("youtube-dl", args);
 }
@@ -73,6 +77,7 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     QString album = json["album"].toString();
     QString artist = json["artist"].toString();
     QString cover = json["thumbnail"].toString();
+    int duration = json["duration"].toInt();
 
     if(album.isEmpty() || artist.isEmpty())
     {
@@ -88,19 +93,11 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
     for(const QJsonValue &value : json["chapters"].toArray())
     {
-        QStringList titles =
-        {
-            QString::number(m_ui->tracksWidget->topLevelItemCount() + 1),
-            artist,
-            value["title"].toString().remove(titleRegexp).trimmed(),
-            QString::number(value["start_time"].toInt()),
-        };
-
-        QTreeWidgetItem *item = new QTreeWidgetItem(titles);
-        m_ui->tracksWidget->addTopLevelItem(item);
+        m_model->addTrack(artist, value["title"].toString().remove(titleRegexp).trimmed(),
+                value["start_time"].toInt());
     }
-    m_ui->tracksWidget->resizeColumnToContents(0);
-    m_ui->tracksWidget->resizeColumnToContents(1);
-    m_ui->tracksWidget->resizeColumnToContents(2);
-    m_ui->tracksWidget->resizeColumnToContents(3);
+
+    m_ui->albumArtistLabel->setText(artist);
+    m_ui->durationLabel->setText(Utils::formatDuration(duration));
+    m_ui->fileNameLabel->setText(fileName);
 }

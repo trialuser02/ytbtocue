@@ -36,6 +36,8 @@ namespace Ui {
     class MainWindow;
 }
 
+class CueModel;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -50,6 +52,7 @@ private slots:
 private:
     Ui::MainWindow *m_ui;
     QProcess *m_process;
+    CueModel *m_model;
 };
 
 #endif // MAINWINDOW_H

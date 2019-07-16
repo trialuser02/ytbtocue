@@ -1,0 +1,32 @@
+#ifndef CUEMODEL_H
+#define CUEMODEL_H
+
+#include <QAbstractListModel>
+#include <QList>
+
+
+class CueModel : public QAbstractListModel
+{
+    Q_OBJECT
+public:
+    explicit CueModel(QObject *parent = nullptr);
+
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    int rowCount(const QModelIndex &parent) const override;
+    int columnCount(const QModelIndex &parent) const override;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    void addTrack(const QString &performer, const QString &title, int offset);
+    void clear();
+
+private:
+
+    struct CueItem
+    {
+        QString performer;
+        QString title;
+        int offset = 0;
+    };
+    QList<CueItem> m_items;
+};
+
+#endif // CUEMODEL_H
