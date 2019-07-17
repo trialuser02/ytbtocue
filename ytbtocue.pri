@@ -10,5 +10,10 @@ QMAKE_DISTCLEAN += -r .build
 
 #Install paths
 unix {
-  isEmpty(PLUGINDIR):PLUGINDIR = $$[QT_INSTALL_PLUGINS]
+  isEmpty(PREFIX) {
+    PREFIX = /usr
+  }
+
+  BINDIR = $$PREFIX/bin
+  DATADIR = $$PREFIX/share
 }

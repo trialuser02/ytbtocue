@@ -1,3 +1,5 @@
+include(../ytbtocue.pri)
+
 TEMPLATE = app
 QT += widgets
 TARGET = ytbtocue
@@ -13,3 +15,7 @@ HEADERS += \
     mainwindow.h \
     cuemodel.h \
     utils.h
+
+target.path = $$BINDIR
+
+INSTALLS += target
