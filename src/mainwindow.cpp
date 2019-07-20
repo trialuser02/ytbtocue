@@ -31,6 +31,9 @@
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QRegularExpression>
+#include <QStandardPaths>
+#include <QDir>
+#include <QFile>
 #include "mainwindow.h"
 #include "cuemodel.h"
 #include "utils.h"
@@ -45,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(onFinished(int,QProcess::ExitStatus)));
     m_ui->urlEdit->setText("https://www.youtube.com/watch?v=9MolAvqXbzU");
+    m_ui->outDirLineEdit->setText(QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
 }
 
 MainWindow::~MainWindow()
@@ -74,14 +78,17 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     qDebug("+%s+", json.toJson().constData());
 
     QString fileName = json["_filename"].toString();
+    m_title = json["title"].toString();
     QString album = json["album"].toString();
     QString artist = json["artist"].toString();
     QString cover = json["thumbnail"].toString();
     int duration = json["duration"].toInt();
 
+    m_model->setFile(fileName);
+
     if(album.isEmpty() || artist.isEmpty())
     {
-        QStringList parts = fileName.split(" - ");
+        QStringList parts = m_title.split(" - ");
         if(parts.count() == 2)
         {
             artist = parts.at(0);
@@ -100,4 +107,17 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     m_ui->albumArtistLabel->setText(artist);
     m_ui->durationLabel->setText(Utils::formatDuration(duration));
     m_ui->fileNameLabel->setText(fileName);
+}
+
+void MainWindow::on_downloadButton_clicked()
+{
+   QString cueDir = m_ui->outDirLineEdit->text() + "/" + m_title;
+   QDir("/").mkpath(cueDir);
+   QString fileName = m_model->file();
+   fileName.remove(QRegularExpression("\\.\\S+$"));
+
+   QString cuePath = cueDir + "/" + fileName + ".cue";
+   QFile file(cuePath);
+   file.open(QIODevice::WriteOnly);
+   file.write(m_model->generate());
 }

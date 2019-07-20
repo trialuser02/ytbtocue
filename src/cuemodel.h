@@ -16,7 +16,10 @@ public:
     int columnCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
     void addTrack(const QString &performer, const QString &title, int offset);
+    void setFile(const QString &file);
+    const QString &file() const;
     void clear();
+    QByteArray generate();
 
 private:
 
@@ -27,6 +30,7 @@ private:
         int offset = 0;
     };
     QList<CueItem> m_items;
+    QString m_file;
 };
 
 #endif // CUEMODEL_H

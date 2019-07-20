@@ -3,9 +3,7 @@
 #include "cuemodel.h"
 
 CueModel::CueModel(QObject *parent) : QAbstractListModel(parent)
-{
-
-}
+{}
 
 QVariant CueModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
@@ -65,9 +63,36 @@ void CueModel::addTrack(const QString &performer, const QString &title, int offs
     endInsertRows();
 }
 
+void CueModel::setFile(const QString &file)
+{
+    m_file = file;
+}
+
+const QString &CueModel::file() const
+{
+    return m_file;
+}
+
 void CueModel::clear()
 {
     beginResetModel();
     m_items.clear();
+    m_file.clear();
     endResetModel();
+}
+
+QByteArray CueModel::generate()
+{
+    QString out;
+    out += QString("FILE \"%1\"\n").arg(m_file);
+    for(int i = 0; i < m_items.count(); ++i)
+    {
+        out += QString("  TRACK %1 AUDIO\n").arg(i + 1, 2, 10, QChar('0'));
+        out += QString("    TITLE \"%1\"\n").arg(m_items[i].title);
+        if(!m_items[i].performer.isEmpty())
+            out += QString("    PERFORMER \"%1\"\n").arg(m_items[i].performer);
+        out += QString("    INDEX 01 %1:%2\n").arg(m_items[i].offset / 60,  2, 10, QChar('0'))
+                .arg(m_items[i].offset % 60,  2, 10, QChar('0'));
+    }
+    return out.toUtf8();
 }

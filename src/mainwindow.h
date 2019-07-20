@@ -48,11 +48,13 @@ public:
 private slots:
     void on_fetchButton_clicked();
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void on_downloadButton_clicked();
 
 private:
     Ui::MainWindow *m_ui;
     QProcess *m_process;
     CueModel *m_model;
+    QString m_title;
 };
 
 #endif // MAINWINDOW_H
