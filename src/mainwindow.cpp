@@ -111,9 +111,11 @@ void MainWindow::on_downloadButton_clicked()
 {
    QString cueDir = m_ui->outDirLineEdit->text() + "/" + m_title;
    QDir("/").mkpath(cueDir);
-   QString fileName = m_model->file();
+   QString fileName = m_file;
    fileName.remove(QRegularExpression("\\.\\S+$"));
 
+
+   m_model->setFile(m_file);
    QString cuePath = cueDir + "/" + fileName + ".cue";
    QFile file(cuePath);
    file.open(QIODevice::WriteOnly);
