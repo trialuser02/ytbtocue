@@ -36,6 +36,8 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
+    app.setApplicationName("ytbtocue");
+    app.setOrganizationName("ytbtocue");
 
     MainWindow w;
     w.show();

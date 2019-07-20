@@ -34,6 +34,7 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QFile>
+#include <QSettings>
 #include "mainwindow.h"
 #include "cuemodel.h"
 #include "utils.h"
@@ -47,8 +48,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_ui->treeView->setModel(m_model);
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(onFinished(int,QProcess::ExitStatus)));
-    m_ui->urlEdit->setText("https://www.youtube.com/watch?v=9MolAvqXbzU");
-    m_ui->outDirLineEdit->setText(QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
+    readSettings();
 }
 
 MainWindow::~MainWindow()
@@ -77,14 +77,12 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
     qDebug("+%s+", json.toJson().constData());
 
-    QString fileName = json["_filename"].toString();
+    m_file = json["_filename"].toString();
     m_title = json["title"].toString();
     QString album = json["album"].toString();
     QString artist = json["artist"].toString();
     QString cover = json["thumbnail"].toString();
     int duration = json["duration"].toInt();
-
-    m_model->setFile(fileName);
 
     if(album.isEmpty() || artist.isEmpty())
     {
@@ -106,7 +104,7 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
     m_ui->albumArtistLabel->setText(artist);
     m_ui->durationLabel->setText(Utils::formatDuration(duration));
-    m_ui->fileNameLabel->setText(fileName);
+    m_ui->fileNameLabel->setText(m_file);
 }
 
 void MainWindow::on_downloadButton_clicked()
@@ -120,4 +118,32 @@ void MainWindow::on_downloadButton_clicked()
    QFile file(cuePath);
    file.open(QIODevice::WriteOnly);
    file.write(m_model->generate());
+}
+
+void MainWindow::closeEvent(QCloseEvent *)
+{
+    writeSettings();
+}
+
+void MainWindow::readSettings()
+{
+   QSettings settings;
+   settings.beginGroup("General");
+   restoreGeometry(settings.value("mw_geometry").toByteArray());
+   m_ui->urlEdit->setText(settings.value("url", "https://www.youtube.com/watch?v=9MolAvqXbzU").toString());
+   QString musicLocation = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
+   m_ui->outDirLineEdit->setText(settings.value("out_dir", musicLocation).toString());
+   m_ui->treeView->header()->restoreState(settings.value("track_list_state").toByteArray());
+   settings.endGroup();
+}
+
+void MainWindow::writeSettings()
+{
+    QSettings settings;
+    settings.beginGroup("General");
+    settings.setValue("mw_geometry", saveGeometry());
+    settings.setValue("url", m_ui->urlEdit->text());
+    settings.setValue("out_dir", m_ui->outDirLineEdit->text());
+    settings.setValue("track_list_state", m_ui->treeView->header()->saveState());
+    settings.endGroup();
 }

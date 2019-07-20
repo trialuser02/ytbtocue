@@ -51,10 +51,14 @@ private slots:
     void on_downloadButton_clicked();
 
 private:
+    void closeEvent(QCloseEvent *) override;
+    void readSettings();
+    void writeSettings();
+
     Ui::MainWindow *m_ui;
     QProcess *m_process;
     CueModel *m_model;
-    QString m_title;
+    QString m_title, m_file;
 };
 
 #endif // MAINWINDOW_H
