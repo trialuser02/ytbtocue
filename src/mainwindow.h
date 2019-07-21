@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Ilya Kotov <forkotov02@ya.ru>
+ * Copyright (c) 2019, Ilya Kotov <iokotov@astralinux.ru>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -50,6 +50,7 @@ private slots:
     void onReadyRead();
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void on_downloadButton_clicked();
+    void on_cancelButton_clicked();
 
 private:
     void closeEvent(QCloseEvent *) override;
@@ -58,15 +59,17 @@ private:
 
     enum State
     {
-        Fetching = 0,
-        Downloading
+        Idle = 0,
+        Fetching,
+        Downloading,
+        Cancelling,
     };
 
     Ui::MainWindow *m_ui;
     QProcess *m_process;
     CueModel *m_model;
     QString m_title, m_file;
-    State m_state = Fetching;
+    State m_state = Idle;
 };
 
 #endif // MAINWINDOW_H

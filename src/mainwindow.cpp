@@ -55,6 +55,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 MainWindow::~MainWindow()
 {
+    if(m_process->state() == QProcess::Running)
+    {
+        m_process->kill();
+        m_process->waitForFinished();
+    }
     delete m_ui;
 }
 
@@ -91,6 +96,18 @@ void MainWindow::onReadyRead()
 
 void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
+    if(m_state == Cancelling)
+    {
+        m_state = Idle;
+        return;
+    }
+
+    if(exitCode != EXIT_SUCCESS || exitStatus != QProcess::NormalExit)
+    {
+        qWarning("MainWindow: youtube-dl finished with error: %s", qPrintable(m_process->errorString()));
+        return;
+    }
+
     if(m_state == Fetching)
     {
         QJsonDocument json = QJsonDocument::fromJson(m_process->readAllStandardOutput());
@@ -137,8 +154,9 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     }
     else if(m_state == Downloading)
     {
-        qDebug() << "finished";
+        m_ui->statusbar->showMessage(tr("Finished"));
     }
+    m_state = Idle;
 }
 
 void MainWindow::on_downloadButton_clicked()
@@ -163,9 +181,19 @@ void MainWindow::on_downloadButton_clicked()
         "-o", m_ui->outDirLineEdit->text() + "/%(title)s/%(title)s.%(ext)s"
     };
 
-
     m_state = Downloading;
     m_process->start("youtube-dl", args);
+}
+
+void MainWindow::on_cancelButton_clicked()
+{
+    if(m_process->state() == QProcess::Running)
+    {
+        m_state = Cancelling;
+        m_process->kill();
+        m_process->waitForFinished();
+        m_ui->statusbar->showMessage(tr("Stopped"));
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
@@ -175,14 +203,14 @@ void MainWindow::closeEvent(QCloseEvent *)
 
 void MainWindow::readSettings()
 {
-   QSettings settings;
-   settings.beginGroup("General");
-   restoreGeometry(settings.value("mw_geometry").toByteArray());
-   m_ui->urlEdit->setText(settings.value("url").toString());
-   QString musicLocation = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
-   m_ui->outDirLineEdit->setText(settings.value("out_dir", musicLocation).toString());
-   m_ui->treeView->header()->restoreState(settings.value("track_list_state").toByteArray());
-   settings.endGroup();
+    QSettings settings;
+    settings.beginGroup("General");
+    restoreGeometry(settings.value("mw_geometry").toByteArray());
+    m_ui->urlEdit->setText(settings.value("url").toString());
+    QString musicLocation = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
+    m_ui->outDirLineEdit->setText(settings.value("out_dir", musicLocation).toString());
+    m_ui->treeView->header()->restoreState(settings.value("track_list_state").toByteArray());
+    settings.endGroup();
 }
 
 void MainWindow::writeSettings()
