@@ -39,6 +39,15 @@ int main(int argc, char **argv)
     app.setApplicationName("ytbtocue");
     app.setOrganizationName("ytbtocue");
 
+    QTranslator translator;
+    QString locale = QLocale::system().name();
+    translator.load(QString(":/ytbtocue_") + locale);
+    app.installTranslator(&translator);
+
+    QTranslator qt_translator;
+    qt_translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qtbase_" + locale);
+    app.installTranslator(&qt_translator);
+
     MainWindow w;
     w.show();
 
