@@ -35,6 +35,7 @@
 #include <QDir>
 #include <QFile>
 #include <QSettings>
+#include <QMap>
 #include "mainwindow.h"
 #include "cuemodel.h"
 #include "utils.h"
@@ -48,6 +49,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_ui->treeView->setModel(m_model);
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(onFinished(int,QProcess::ExitStatus)));
+    connect(m_process, SIGNAL(readyRead()), SLOT(onReadyRead()));
     readSettings();
 }
 
@@ -62,64 +64,108 @@ void MainWindow::on_fetchButton_clicked()
         return;
 
     m_model->clear();
+    m_ui->formatComboBox->clear();
     QStringList args = { "-j", m_ui->urlEdit->text() };
     m_process->start("youtube-dl", args);
+    m_state = Fetching;
+}
+
+void MainWindow::onReadyRead()
+{
+    if(m_state == Downloading)
+    {
+        QString line = QString::fromLatin1(m_process->readAll()).trimmed();
+        static QRegularExpression progressRegexp("^\\[download\\]\\s+(\\d+\\.\\d+)%\\s+of\\s+(\\d+\\.\\d+)MiB"
+                                                 "\\s+at\\s+(\\d+\\.\\d+)KiB/s\\s+ETA\\s+(\\d+:\\d+)");
+        QRegularExpressionMatch m = progressRegexp.match(line);
+        if(m.isValid() && m.hasMatch())
+        {
+            m_ui->progressBar->setValue(int(m.captured(1).toDouble()));
+            m_ui->statusbar->showMessage(tr("%1 MiB | %2 KiB/s | ETA: %3")
+                                         .arg(m.captured(2))
+                                         .arg(m.captured(3))
+                                         .arg(m.captured(4)));
+        }
+    }
 }
 
 void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    QJsonDocument json = QJsonDocument::fromJson(m_process->readAllStandardOutput());
-    if(json.isEmpty())
+    if(m_state == Fetching)
     {
-        qWarning("MainWindow: unable to parse youtube-dl output");
-        return;
-    }
-
-    qDebug("+%s+", json.toJson().constData());
-
-    m_file = json["_filename"].toString();
-    m_title = json["title"].toString();
-    QString album = json["album"].toString();
-    QString artist = json["artist"].toString();
-    QString cover = json["thumbnail"].toString();
-    int duration = json["duration"].toInt();
-
-    if(album.isEmpty() || artist.isEmpty())
-    {
-        QStringList parts = m_title.split(" - ");
-        if(parts.count() == 2)
+        QJsonDocument json = QJsonDocument::fromJson(m_process->readAllStandardOutput());
+        if(json.isEmpty())
         {
-            artist = parts.at(0);
-            album = parts.at(1);
+            qWarning("MainWindow: unable to parse youtube-dl output");
+            return;
         }
+
+        m_file = json["_filename"].toString();
+        m_title = json["title"].toString();
+        QString album = json["album"].toString();
+        QString artist = json["artist"].toString();
+        QString cover = json["thumbnail"].toString();
+        int duration = json["duration"].toInt();
+
+        if(album.isEmpty() || artist.isEmpty())
+        {
+            QStringList parts = m_title.split(" - ");
+            if(parts.count() == 2)
+            {
+                artist = parts.at(0);
+                album = parts.at(1);
+            }
+        }
+
+        QRegularExpression titleRegexp("^\\d+\\.\\s");
+
+        for(const QJsonValue &value : json["chapters"].toArray())
+        {
+            m_model->addTrack(artist, value["title"].toString().remove(titleRegexp).trimmed(),
+                    value["start_time"].toInt());
+        }
+
+        m_model->setAlbum(album);
+        m_ui->albumArtistLabel->setText(artist);
+        m_ui->durationLabel->setText(Utils::formatDuration(duration));
+        m_ui->fileNameLabel->setText(m_file);
+
+        m_ui->formatComboBox->addItem("opus", "opus");
+        m_ui->formatComboBox->addItem("vorbis", "ogg");
+        m_ui->formatComboBox->addItem("m4a", "m4a");
+        m_ui->formatComboBox->addItem("aac", "aac");
     }
-
-    QRegularExpression titleRegexp("^\\d+\\.\\s");
-
-    for(const QJsonValue &value : json["chapters"].toArray())
+    else if(m_state == Downloading)
     {
-        m_model->addTrack(artist, value["title"].toString().remove(titleRegexp).trimmed(),
-                value["start_time"].toInt());
+        qDebug() << "finished";
     }
-
-    m_ui->albumArtistLabel->setText(artist);
-    m_ui->durationLabel->setText(Utils::formatDuration(duration));
-    m_ui->fileNameLabel->setText(m_file);
 }
 
 void MainWindow::on_downloadButton_clicked()
 {
-   QString cueDir = m_ui->outDirLineEdit->text() + "/" + m_title;
-   QDir("/").mkpath(cueDir);
-   QString fileName = m_file;
-   fileName.remove(QRegularExpression("\\.\\S+$"));
+    if(m_ui->formatComboBox->currentIndex() < 0)
+        return;
+
+    QString codec = m_ui->formatComboBox->currentText();
+    QString ext = m_ui->formatComboBox->currentData().toString();
+
+    QString cueDir = m_ui->outDirLineEdit->text() + "/" + m_title;
+    QDir("/").mkpath(cueDir);
+
+    m_model->setFile(m_title + "." + ext);
+    QString cuePath = cueDir + "/" + m_title + ".cue";
+    QFile file(cuePath);
+    file.open(QIODevice::WriteOnly);
+    file.write(m_model->generate());
+
+    QStringList args = {
+        "-x", "--audio-format", codec, m_ui->urlEdit->text(),
+        "-o", m_ui->outDirLineEdit->text() + "/%(title)s/%(title)s.%(ext)s"
+    };
 
 
-   m_model->setFile(m_file);
-   QString cuePath = cueDir + "/" + fileName + ".cue";
-   QFile file(cuePath);
-   file.open(QIODevice::WriteOnly);
-   file.write(m_model->generate());
+    m_state = Downloading;
+    m_process->start("youtube-dl", args);
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
@@ -132,7 +178,7 @@ void MainWindow::readSettings()
    QSettings settings;
    settings.beginGroup("General");
    restoreGeometry(settings.value("mw_geometry").toByteArray());
-   m_ui->urlEdit->setText(settings.value("url", "https://www.youtube.com/watch?v=9MolAvqXbzU").toString());
+   m_ui->urlEdit->setText(settings.value("url").toString());
    QString musicLocation = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
    m_ui->outDirLineEdit->setText(settings.value("out_dir", musicLocation).toString());
    m_ui->treeView->header()->restoreState(settings.value("track_list_state").toByteArray());

@@ -47,6 +47,7 @@ public:
 
 private slots:
     void on_fetchButton_clicked();
+    void onReadyRead();
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void on_downloadButton_clicked();
 
@@ -55,10 +56,17 @@ private:
     void readSettings();
     void writeSettings();
 
+    enum State
+    {
+        Fetching = 0,
+        Downloading
+    };
+
     Ui::MainWindow *m_ui;
     QProcess *m_process;
     CueModel *m_model;
     QString m_title, m_file;
+    State m_state = Fetching;
 };
 
 #endif // MAINWINDOW_H

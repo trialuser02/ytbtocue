@@ -73,17 +73,30 @@ const QString &CueModel::file() const
     return m_file;
 }
 
+void CueModel::setAlbum(const QString &album)
+{
+    m_album = album;
+}
+
+const QString &CueModel::album() const
+{
+    return m_album;
+}
+
 void CueModel::clear()
 {
     beginResetModel();
     m_items.clear();
     m_file.clear();
+    m_album.clear();
     endResetModel();
 }
 
 QByteArray CueModel::generate()
 {
     QString out;
+    if(!m_album.isEmpty())
+        out += QString("TITLE \"%1\"\n").arg(m_album);
     out += QString("FILE \"%1\"\n").arg(m_file);
     for(int i = 0; i < m_items.count(); ++i)
     {

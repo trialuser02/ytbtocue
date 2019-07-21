@@ -18,6 +18,8 @@ public:
     void addTrack(const QString &performer, const QString &title, int offset);
     void setFile(const QString &file);
     const QString &file() const;
+    void setAlbum(const QString &album);
+    const QString &album() const;
     void clear();
     QByteArray generate();
 
@@ -30,7 +32,7 @@ private:
         int offset = 0;
     };
     QList<CueItem> m_items;
-    QString m_file;
+    QString m_file, m_album;
 };
 
 #endif // CUEMODEL_H
