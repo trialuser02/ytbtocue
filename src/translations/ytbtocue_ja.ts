@@ -32,59 +32,74 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="46"/>
+        <location filename="../mainwindow.ui" line="199"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="53"/>
+        <location filename="../mainwindow.ui" line="206"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="62"/>
+        <location filename="../mainwindow.ui" line="180"/>
         <source>Output directory:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="69"/>
+        <location filename="../mainwindow.ui" line="147"/>
         <source>Audio format:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="78"/>
+        <location filename="../mainwindow.ui" line="23"/>
         <source>URL:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="88"/>
+        <location filename="../mainwindow.ui" line="33"/>
         <source>Fetch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="110"/>
+        <location filename="../mainwindow.ui" line="42"/>
         <source>Cue Sheet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="116"/>
+        <location filename="../mainwindow.ui" line="66"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="73"/>
+        <source>Add from text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="80"/>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="117"/>
         <source>File name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="123"/>
-        <location filename="../mainwindow.ui" line="130"/>
-        <location filename="../mainwindow.ui" line="157"/>
+        <location filename="../mainwindow.ui" line="96"/>
+        <location filename="../mainwindow.ui" line="110"/>
+        <location filename="../mainwindow.ui" line="124"/>
         <source>N/A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="150"/>
+        <location filename="../mainwindow.ui" line="103"/>
         <source>Duration:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="164"/>
+        <location filename="../mainwindow.ui" line="89"/>
         <source>Album artist:</source>
         <translation type="unfinished"></translation>
     </message>
