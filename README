@@ -1,0 +1,4 @@
+YouTube to CUE 
+
+This program is intended to download audio albums from YouTube. It downloads
+audio file using youtube-dl and generates Cue Sheet with metadata.
