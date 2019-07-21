@@ -16,6 +16,8 @@ HEADERS += \
     cuemodel.h \
     utils.h
 
+RESOURCES += translations/translations.qrc
+
 target.path = $$BINDIR
 
 INSTALLS += target

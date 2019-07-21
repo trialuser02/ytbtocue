@@ -4,7 +4,10 @@ MOC_DIR=./.build/moc/
 OBJECTS_DIR=./.build/obj
 RCC_DIR=./.build/rcc
 
-CONFIG += hide_symbols
+QMAKE_DISTCLEAN += -r .build
+QMAKE_DISTCLEAN += translations/*.qm
+
+CONFIG += c++14 hide_symbols
 DEFINES += QT_DEPRECATED_WARNINGS
 QMAKE_DISTCLEAN += -r .build
 
