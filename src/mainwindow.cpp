@@ -196,6 +196,18 @@ void MainWindow::on_cancelButton_clicked()
     }
 }
 
+void MainWindow::on_addTrackButton_clicked()
+{
+    m_ui->treeView->currentIndex();
+}
+
+void MainWindow::on_removeTrackButton_clicked()
+{
+    QModelIndex idx = m_ui->treeView->currentIndex();
+    if(idx.isValid())
+        m_model->removeTrack(idx.row());
+}
+
 void MainWindow::closeEvent(QCloseEvent *)
 {
     writeSettings();

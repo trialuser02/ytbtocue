@@ -51,6 +51,8 @@ private slots:
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void on_downloadButton_clicked();
     void on_cancelButton_clicked();
+    void on_addTrackButton_clicked();
+    void on_removeTrackButton_clicked();
 
 private:
     void closeEvent(QCloseEvent *) override;

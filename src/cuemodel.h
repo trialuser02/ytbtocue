@@ -49,6 +49,7 @@ public:
     void setAlbum(const QString &album);
     const QString &album() const;
     void clear();
+    void removeTrack(int idx);
     QByteArray generate();
 
 private:

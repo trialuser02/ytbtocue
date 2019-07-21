@@ -120,6 +120,13 @@ void CueModel::clear()
     endResetModel();
 }
 
+void CueModel::removeTrack(int idx)
+{
+    beginRemoveRows(QModelIndex(), idx, idx);
+    m_items.removeAt(idx);
+    endRemoveRows();
+}
+
 QByteArray CueModel::generate()
 {
     QString out;
