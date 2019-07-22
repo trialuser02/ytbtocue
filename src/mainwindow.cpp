@@ -200,7 +200,7 @@ void MainWindow::on_cancelButton_clicked()
 
 void MainWindow::on_addTrackButton_clicked()
 {
-    m_ui->treeView->currentIndex();
+    m_model->addTrack("?", "?", 0);
 }
 
 void MainWindow::on_removeTrackButton_clicked()
