@@ -27,6 +27,7 @@
  */
 
 #include <QtDebug>
+#include <QTime>
 #include "utils.h"
 #include "cuemodel.h"
 
@@ -64,7 +65,7 @@ int CueModel::columnCount(const QModelIndex &parent) const
 
 QVariant CueModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid() || role != Qt::DisplayRole || index.row() >= m_items.count())
+    if(!index.isValid() || (role != Qt::DisplayRole && role != Qt::EditRole) || index.row() >= m_items.count())
         return QVariant();
 
     int column = index.column();
@@ -76,10 +77,51 @@ QVariant CueModel::data(const QModelIndex &index, int role) const
         return m_items[row].performer;
     else if(column == 2)
         return m_items[row].title;
-    else if(column == 3)
+    else if(column == 3 && role == Qt::DisplayRole)
         return Utils::formatDuration(m_items[row].offset);
+    else if(column == 3 && role == Qt::EditRole)
+        return QTime(0, 0).addSecs(m_items[row].offset);
 
     return QVariant();
+}
+
+bool CueModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if(!index.isValid() || role != Qt::EditRole)
+        return false;
+
+    int row = index.row();
+    int column = index.column();
+
+    if(column == 1)
+    {
+        m_items[row].performer = value.toString();
+        emit dataChanged(index, index, { role });
+        return true;
+    }
+    else if(column == 2)
+    {
+        m_items[row].title = value.toString();
+        emit dataChanged(index, index, { role });
+        return true;
+    }
+    else if(column == 3)
+    {
+        QTime time = value.toTime();
+        m_items[row].offset = time.hour() * 3600 + time.minute() * 60 + time.second();
+        emit dataChanged(index, index, { role });
+        return true;
+    }
+    return false;
+}
+
+Qt::ItemFlags CueModel::flags(const QModelIndex &index) const
+{
+    Qt::ItemFlags flags = QAbstractListModel::flags(index);
+    if(index.column() == 1 || index.column() == 2 || index.column() == 3)
+        flags |= Qt::ItemIsEditable;
+
+    return flags;
 }
 
 void CueModel::addTrack(const QString &performer, const QString &title, int offset)

@@ -36,6 +36,7 @@
 #include <QFile>
 #include <QSettings>
 #include <QMap>
+#include "tracklistitemdelegate.h"
 #include "mainwindow.h"
 #include "cuemodel.h"
 #include "utils.h"
@@ -47,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_ui->setupUi(this);
     m_model = new CueModel(this);
     m_ui->treeView->setModel(m_model);
+    m_ui->treeView->setItemDelegate(new TrackListItemDelegate(this));
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(onFinished(int,QProcess::ExitStatus)));
     connect(m_process, SIGNAL(readyRead()), SLOT(onReadyRead()));

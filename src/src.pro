@@ -9,12 +9,14 @@ FORMS += mainwindow.ui
 SOURCES += main.cpp \
     mainwindow.cpp \
     cuemodel.cpp \
-    utils.cpp
+    utils.cpp \
+    tracklistitemdelegate.cpp
 
 HEADERS += \
     mainwindow.h \
     cuemodel.h \
-    utils.h
+    utils.h \
+    tracklistitemdelegate.h
 
 RESOURCES += translations/translations.qrc
 
