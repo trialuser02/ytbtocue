@@ -7,7 +7,7 @@ RCC_DIR=./.build/rcc
 QMAKE_DISTCLEAN += -r .build
 QMAKE_DISTCLEAN += translations/*.qm
 
-CONFIG += c++14 hide_symbols
+CONFIG += c++11 hide_symbols
 DEFINES += QT_DEPRECATED_WARNINGS
 QMAKE_DISTCLEAN += -r .build
 

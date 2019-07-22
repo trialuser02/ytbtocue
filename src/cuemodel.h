@@ -58,7 +58,7 @@ private:
     {
         QString performer;
         QString title;
-        int offset = 0;
+        int offset;
     };
     QList<CueItem> m_items;
     QString m_file, m_album;
