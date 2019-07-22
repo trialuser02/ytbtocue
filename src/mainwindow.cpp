@@ -124,17 +124,25 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         QString album = json["album"].toString();
         QString artist = json["artist"].toString();
         QString cover = json["thumbnail"].toString();
+        QString date = json["upload_date"].toString();
         int duration = json["duration"].toInt();
 
         if(album.isEmpty() || artist.isEmpty())
         {
             QStringList parts = m_title.split(" - ");
-            if(parts.count() == 2)
+            if(parts.count() >= 2)
             {
                 artist = parts.at(0);
                 album = parts.at(1);
             }
         }
+
+        m_ui->albumEdit->setText(album);
+        m_ui->albumArtistEdit->setText(artist);
+        m_ui->fileEdit->setText(m_title);
+        m_ui->genreEdit->clear();
+        m_ui->dateEdit->setText(date.mid(0, 4));
+        m_ui->commentEdit->setText(m_ui->urlEdit->text());
 
         QRegularExpression titleRegexp("^\\d+\\.\\s");
 
@@ -145,9 +153,7 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         }
 
         m_model->setAlbum(album);
-        m_ui->albumArtistLabel->setText(artist);
         m_ui->durationLabel->setText(Utils::formatDuration(duration));
-        m_ui->fileNameLabel->setText(m_file);
 
         m_ui->formatComboBox->addItem("opus", "opus");
         m_ui->formatComboBox->addItem("vorbis", "ogg");
