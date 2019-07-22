@@ -1,4 +1,19 @@
-YouTube to CUE 
+ytbtocue - YouTube to CUE Converter
 
 This program is intended to download audio albums from YouTube. It downloads
 audio file using youtube-dl and generates Cue Sheet with metadata.
+
+Official home page: https://github.com/trialuser02/ytbtocue
+
+Requirements:
+
+- GNU Linux or FreeBSD
+- youtube-dl (Latest version)
+- qtbase >= 5.10.0
+- qttools >= 5.10.0 (For build only)
+
+Installation:
+
+qmake PREFIX=<your installation path>
+make
+make install (under root)
