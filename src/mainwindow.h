@@ -70,7 +70,7 @@ private:
     Ui::MainWindow *m_ui;
     QProcess *m_process;
     CueModel *m_model;
-    QString m_title, m_file;
+    QString m_title;
     State m_state = Idle;
 };
 

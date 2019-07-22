@@ -119,7 +119,6 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
             return;
         }
 
-        m_file = json["_filename"].toString();
         m_title = json["title"].toString();
         QString album = json["album"].toString();
         QString artist = json["artist"].toString();
@@ -152,7 +151,6 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
                     value["start_time"].toInt());
         }
 
-        m_model->setAlbum(album);
         m_ui->durationLabel->setText(Utils::formatDuration(duration));
 
         m_ui->formatComboBox->addItem("opus", "opus");
@@ -175,18 +173,24 @@ void MainWindow::on_downloadButton_clicked()
     QString codec = m_ui->formatComboBox->currentText();
     QString ext = m_ui->formatComboBox->currentData().toString();
 
+    m_model->setMetaData(CueModel::PERFORMER, m_ui->albumArtistEdit->text());
+    m_model->setMetaData(CueModel::TITLE, m_ui->albumEdit->text());
+    m_model->setMetaData(CueModel::GENRE, m_ui->genreEdit->text());
+    m_model->setMetaData(CueModel::DATE, m_ui->dateEdit->text());
+    m_model->setMetaData(CueModel::COMMENT, m_ui->commentEdit->text());
+    m_model->setMetaData(CueModel::FILE, m_ui->fileEdit->text() + "." + ext);
+
     QString cueDir = m_ui->outDirLineEdit->text() + "/" + m_title;
     QDir("/").mkpath(cueDir);
-
-    m_model->setFile(m_title + "." + ext);
-    QString cuePath = cueDir + "/" + m_title + ".cue";
+    QString cuePath = cueDir + "/" + m_ui->fileEdit->text() + ".cue";
     QFile file(cuePath);
     file.open(QIODevice::WriteOnly);
     file.write(m_model->generate());
 
     QStringList args = {
         "-x", "--audio-format", codec, m_ui->urlEdit->text(),
-        "-o", m_ui->outDirLineEdit->text() + "/%(title)s/%(title)s.%(ext)s"
+        "-o", m_ui->outDirLineEdit->text() + "/%(title)s/" + m_ui->fileEdit->text() + ".%(ext)s",
+        "--write-thumbnail"
     };
 
     m_state = Downloading;

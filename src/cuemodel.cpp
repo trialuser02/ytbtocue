@@ -133,32 +133,16 @@ void CueModel::addTrack(const QString &performer, const QString &title, int offs
     endInsertRows();
 }
 
-void CueModel::setFile(const QString &file)
+void CueModel::setMetaData(CueModel::MetaDataKey key, const QString &value)
 {
-    m_file = file;
-}
-
-const QString &CueModel::file() const
-{
-    return m_file;
-}
-
-void CueModel::setAlbum(const QString &album)
-{
-    m_album = album;
-}
-
-const QString &CueModel::album() const
-{
-    return m_album;
+    m_metaData[key] = value.trimmed();
 }
 
 void CueModel::clear()
 {
     beginResetModel();
     m_items.clear();
-    m_file.clear();
-    m_album.clear();
+    m_metaData.clear();
     endResetModel();
 }
 
@@ -172,9 +156,19 @@ void CueModel::removeTrack(int idx)
 QByteArray CueModel::generate()
 {
     QString out;
-    if(!m_album.isEmpty())
-        out += QString("TITLE \"%1\"\n").arg(m_album);
-    out += QString("FILE \"%1\"\n").arg(m_file);
+    if(!m_metaData.value(GENRE).isEmpty())
+        out += QString("REM GENRE \"%1\"\n").arg(m_metaData.value(GENRE));
+    if(!m_metaData.value(DATE).isEmpty())
+        out += QString("REM DATE %1\n").arg(m_metaData.value(DATE));
+    if(!m_metaData.value(COMMENT).isEmpty())
+        out += QString("REM COMMENT \"%1\"\n").arg(m_metaData.value(COMMENT));
+    if(!m_metaData.value(PERFORMER).isEmpty())
+        out += QString("PERFORMER \"%1\"\n").arg(m_metaData.value(PERFORMER));
+    if(!m_metaData.value(TITLE).isEmpty())
+        out += QString("TITLE \"%1\"\n").arg(m_metaData.value(TITLE));
+    if(!m_metaData.value(FILE).isEmpty())
+        out += QString("FILE \"%1\"\n").arg(m_metaData.value(FILE));
+
     for(int i = 0; i < m_items.count(); ++i)
     {
         out += QString("  TRACK %1 AUDIO\n").arg(i + 1, 2, 10, QChar('0'));

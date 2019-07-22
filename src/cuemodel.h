@@ -31,7 +31,7 @@
 
 #include <QAbstractListModel>
 #include <QList>
-
+#include <QMap>
 
 class CueModel : public QAbstractListModel
 {
@@ -46,10 +46,17 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     void addTrack(const QString &performer, const QString &title, int offset);
-    void setFile(const QString &file);
-    const QString &file() const;
-    void setAlbum(const QString &album);
-    const QString &album() const;
+
+    enum MetaDataKey
+    {
+        PERFORMER = 0,
+        TITLE,
+        GENRE,
+        DATE,
+        COMMENT,
+        FILE
+    };
+    void setMetaData(MetaDataKey key, const QString &value);
     void clear();
     void removeTrack(int idx);
     QByteArray generate();
@@ -63,7 +70,7 @@ private:
         int offset;
     };
     QList<CueItem> m_items;
-    QString m_file, m_album;
+    QMap<MetaDataKey, QString> m_metaData;
 };
 
 #endif // CUEMODEL_H
