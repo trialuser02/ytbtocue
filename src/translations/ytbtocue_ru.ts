@@ -6,22 +6,22 @@
     <message>
         <location filename="../cuemodel.cpp" line="43"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Трек</translation>
     </message>
     <message>
         <location filename="../cuemodel.cpp" line="45"/>
         <source>Performer</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель</translation>
     </message>
     <message>
         <location filename="../cuemodel.cpp" line="47"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Название</translation>
     </message>
     <message>
         <location filename="../cuemodel.cpp" line="49"/>
         <source>Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Смещение</translation>
     </message>
 </context>
 <context>
@@ -29,112 +29,112 @@
     <message>
         <location filename="../mainwindow.ui" line="14"/>
         <source>YouTube to CUE Converter</source>
-        <translation type="unfinished"></translation>
+        <translation>Преобразователь YouTube в CUE</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="306"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузить</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="313"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Отменить</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="287"/>
         <source>Output directory:</source>
-        <translation type="unfinished"></translation>
+        <translation>Выходной каталог:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="254"/>
         <source>Audio format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат аудио:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="23"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="33"/>
         <source>Fetch</source>
-        <translation type="unfinished"></translation>
+        <translation>Получить</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="42"/>
         <source>Cue Sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Cue Sheet</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="50"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="78"/>
         <source>File:</source>
-        <translation type="unfinished"></translation>
+        <translation>Файл:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="132"/>
         <source>Genre:</source>
-        <translation type="unfinished"></translation>
+        <translation>Жанр:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="152"/>
         <source>Date:</source>
-        <translation type="unfinished"></translation>
+        <translation>Дата:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="172"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментарий:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="228"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="235"/>
         <source>Add from text</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить из текста</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="242"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="105"/>
         <source>N/A</source>
-        <translation type="unfinished"></translation>
+        <translation>Недоступно</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="92"/>
         <source>Duration:</source>
-        <translation type="unfinished"></translation>
+        <translation>Длительность:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="64"/>
         <source>Album artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель альбома:</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="91"/>
         <source>%1 MiB | %2 KiB/s | ETA: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 МиБ | %2 КиБ/с | Осталось: %3</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="163"/>
         <source>Finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершено</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="207"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Остановлено</translation>
     </message>
 </context>
 </TS>
