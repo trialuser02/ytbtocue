@@ -32,6 +32,7 @@
 #include <QJsonValue>
 #include <QRegularExpression>
 #include <QStandardPaths>
+#include <QInputDialog>
 #include <QDir>
 #include <QFile>
 #include <QSettings>
@@ -122,7 +123,6 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         m_title = json["title"].toString();
         QString album = json["album"].toString();
         QString artist = json["artist"].toString();
-        QString cover = json["thumbnail"].toString();
         QString date = json["upload_date"].toString();
         int duration = json["duration"].toInt();
 
@@ -211,6 +211,30 @@ void MainWindow::on_cancelButton_clicked()
 void MainWindow::on_addTrackButton_clicked()
 {
     m_model->addTrack("?", "?", 0);
+}
+
+void MainWindow::on_addFromTextButton_clicked()
+{
+    QString text = QInputDialog::getMultiLineText(this, tr("Add track list"), tr("Titles and durations:"));
+    QRegularExpression durationRegExp("(\\d+)\\:(\\d+)");
+
+    if(text.isEmpty())
+        return;
+
+    m_model->clear();
+
+    for(QString line : text.split("\n"))
+    {
+        line = line.trimmed();
+        line.replace("\"", QString());
+        QRegularExpressionMatch m = durationRegExp.match(line);
+        if(m.hasMatch())
+        {
+            m_model->addTrack(m_ui->albumArtistEdit->text(),
+                              line.remove(durationRegExp).trimmed(),
+                              m.captured(1).toInt() * 60 + m.captured(2).toInt());
+        }
+    }
 }
 
 void MainWindow::on_removeTrackButton_clicked()

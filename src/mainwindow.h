@@ -52,6 +52,7 @@ private slots:
     void on_downloadButton_clicked();
     void on_cancelButton_clicked();
     void on_addTrackButton_clicked();
+    void on_addFromTextButton_clicked();
     void on_removeTrackButton_clicked();
 
 private:
