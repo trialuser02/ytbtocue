@@ -291,6 +291,13 @@ void MainWindow::on_aboutQtAction_triggered()
     QMessageBox::aboutQt(this);
 }
 
+void MainWindow::on_selectOutDirButton_clicked()
+{
+    QString p = QFileDialog::getExistingDirectory(this, tr("Select Output Directory"), m_ui->outDirLineEdit->text());
+    if(!p.isEmpty())
+        m_ui->outDirLineEdit->setText(p);
+}
+
 void MainWindow::closeEvent(QCloseEvent *)
 {
     writeSettings();

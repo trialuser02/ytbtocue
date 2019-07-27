@@ -58,6 +58,7 @@ private slots:
     void on_exitAction_triggered();
     void on_aboutAction_triggered();
     void on_aboutQtAction_triggered();
+    void on_selectOutDirButton_clicked();
 
 private:
     void closeEvent(QCloseEvent *) override;
