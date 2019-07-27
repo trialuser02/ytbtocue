@@ -22,4 +22,7 @@ RESOURCES += translations/translations.qrc
 
 target.path = $$BINDIR
 
-INSTALLS += target
+desktop.files = ytbtocue.desktop
+desktop.path = $$DATADIR/applications
+
+INSTALLS += target desktop

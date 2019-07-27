@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>YouTube to CUE Converter</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="emblem-downloads"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0" colspan="3">
@@ -228,7 +231,8 @@
             <string>Add</string>
            </property>
            <property name="icon">
-            <iconset theme="list-add"/>
+            <iconset theme="list-add">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -238,7 +242,8 @@
             <string>Add from text</string>
            </property>
            <property name="icon">
-            <iconset theme="list-add"/>
+            <iconset theme="list-add">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -248,7 +253,8 @@
             <string>Remove</string>
            </property>
            <property name="icon">
-            <iconset theme="list-remove"/>
+            <iconset theme="list-remove">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -315,7 +321,8 @@
          <string>Download</string>
         </property>
         <property name="icon">
-         <iconset theme="go-up"/>
+         <iconset theme="go-up">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -325,7 +332,8 @@
          <string>Cancel</string>
         </property>
         <property name="icon">
-         <iconset theme="process-stop"/>
+         <iconset theme="process-stop">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
