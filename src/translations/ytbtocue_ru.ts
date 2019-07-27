@@ -215,7 +215,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="284"/>
         <source>Written by: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</source>
-        <translation>Разработчик:Илья Котов &amp;lt;iokotov@astralinux.ru&amp;gt;</translation>
+        <translation>Разработчик: Илья Котов &amp;lt;iokotov@astralinux.ru&amp;gt;</translation>
     </message>
 </context>
 </TS>
