@@ -275,7 +275,7 @@ void MainWindow::on_aboutAction_triggered()
         version = tr("not found");
 
     QMessageBox::about(this, tr("About YouTube to CUE Converter"),
-                       QStringLiteral("<b>") + tr("YouTube to CUE Converter %1").arg("0.1") + "</b><br>" +
+                       QStringLiteral("<b>") + tr("YouTube to CUE Converter %1").arg(YTBTOCUE_VERSION_STR) + "</b><br>" +
                        tr("This program is intended to download audio albums from <a href=\"https://www.youtube.com\">YouTube</a>. It downloads "
                           "audio file using <a href=\"https://youtube-dl.org\">youtube-dl</a> and generates "
                           "Cue Sheet with metadata.") + "<br><br>"+
