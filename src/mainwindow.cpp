@@ -244,6 +244,26 @@ void MainWindow::on_removeTrackButton_clicked()
         m_model->removeTrack(idx.row());
 }
 
+void MainWindow::on_saveAsAction_triggered()
+{
+
+}
+
+void MainWindow::on_exitAction_triggered()
+{
+
+}
+
+void MainWindow::on_aboutAction_triggered()
+{
+
+}
+
+void MainWindow::on_aboutQtAction_triggered()
+{
+
+}
+
 void MainWindow::closeEvent(QCloseEvent *)
 {
     writeSettings();

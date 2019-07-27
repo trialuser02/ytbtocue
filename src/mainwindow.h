@@ -54,6 +54,10 @@ private slots:
     void on_addTrackButton_clicked();
     void on_addFromTextButton_clicked();
     void on_removeTrackButton_clicked();
+    void on_saveAsAction_triggered();
+    void on_exitAction_triggered();
+    void on_aboutAction_triggered();
+    void on_aboutQtAction_triggered();
 
 private:
     void closeEvent(QCloseEvent *) override;
