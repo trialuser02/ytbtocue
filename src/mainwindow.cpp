@@ -241,9 +241,9 @@ void MainWindow::on_removeTrackButton_clicked()
 
 void MainWindow::on_saveAsAction_triggered()
 {
-    QString path = QFileDialog::getSaveFileName(this, QDir::homePath() + "/" +
-                                                m_ui->fileEdit->text() + ".cue",
-                                                tr("Save CUE As..."), "*.cue");
+    QString path = QFileDialog::getSaveFileName(this, tr("Save CUE As..."),
+                                                QDir::homePath() + "/" + m_ui->fileEdit->text() + ".cue",
+                                                "*.cue");
     if(!path.isEmpty())
     {
         applyMetaData();
@@ -269,14 +269,14 @@ void MainWindow::on_aboutAction_triggered()
 
     QMessageBox::about(this, tr("About YouTube to CUE Converter"),
                        QStringLiteral("<b>") + tr("YouTube to CUE Converter %1").arg("0.1") + "</b><br>" +
-                       tr("This program is intended to download audio albums from YouTube. It downloads "
-                          "audio file using <a href=\"https://youtube-dl.org/\">youtube-dl</a> and generates "
+                       tr("This program is intended to download audio albums from <a href=\"https://www.youtube.com\">YouTube</a>. It downloads "
+                          "audio file using <a href=\"https://youtube-dl.org\">youtube-dl</a> and generates "
                           "Cue Sheet with metadata.") + "<br><br>"+
                        tr("Qt version: %1 (Compiled with %2)").arg(qVersion()).arg(QT_VERSION_STR) + "<br>"+
                        tr("youtube-dl version: %1").arg(version) + "<br><br>" +
                        tr("Written by: Ilya Kotov &lt;iokotov@astralinux.ru&gt;")  + "<br>" +
-                       tr("Official home page: <a href=\"https://github.com/trialuser02/ytbtocue/\">"
-                          "https://github.com/trialuser02/ytbtocue/</a>"));
+                       tr("Official home page: <a href=\"https://github.com/trialuser02/ytbtocue\">"
+                          "https://github.com/trialuser02/ytbtocue</a>"));
 }
 
 void MainWindow::on_aboutQtAction_triggered()
