@@ -124,6 +124,16 @@ Qt::ItemFlags CueModel::flags(const QModelIndex &index) const
     return flags;
 }
 
+bool CueModel::isEmpty() const
+{
+    return m_items.isEmpty();
+}
+
+int CueModel::count() const
+{
+    return m_items.count();
+}
+
 void CueModel::addTrack(const QString &performer, const QString &title, int offset)
 {
     qDebug() << performer << title << offset;
@@ -131,6 +141,7 @@ void CueModel::addTrack(const QString &performer, const QString &title, int offs
     CueItem item { .performer = performer, .title = title, .offset = offset };
     m_items << item;
     endInsertRows();
+    emit countChanged();
 }
 
 void CueModel::setMetaData(CueModel::MetaDataKey key, const QString &value)
@@ -144,6 +155,7 @@ void CueModel::clear()
     m_items.clear();
     m_metaData.clear();
     endResetModel();
+    emit countChanged();
 }
 
 void CueModel::removeTrack(int idx)
@@ -151,6 +163,7 @@ void CueModel::removeTrack(int idx)
     beginRemoveRows(QModelIndex(), idx, idx);
     m_items.removeAt(idx);
     endRemoveRows();
+    emit countChanged();
 }
 
 QByteArray CueModel::generate()

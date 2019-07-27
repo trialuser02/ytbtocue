@@ -55,7 +55,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(onFinished(int,QProcess::ExitStatus)));
     connect(m_process, SIGNAL(readyRead()), SLOT(onReadyRead()));
+    connect(m_model, &CueModel::countChanged, [=] {
+        m_ui->downloadButton->setEnabled(!m_model->isEmpty());
+        m_ui->saveAsAction->setEnabled(!m_model->isEmpty());
+    });
     readSettings();
+    m_ui->downloadButton->setEnabled(false);
+    m_ui->saveAsAction->setEnabled(false);
+
 }
 
 MainWindow::~MainWindow()
