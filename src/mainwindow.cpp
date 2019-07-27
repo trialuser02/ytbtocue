@@ -217,7 +217,7 @@ void MainWindow::on_addTrackButton_clicked()
 
 void MainWindow::on_addFromTextButton_clicked()
 {
-    QString text = QInputDialog::getMultiLineText(this, tr("Add track list"), tr("Titles and durations:"));
+    QString text = QInputDialog::getMultiLineText(this, tr("Add track list"), tr("Titles and offsets:"));
     QRegularExpression durationRegExp("(\\d+)\\:(\\d+)");
 
     if(text.isEmpty())
@@ -279,10 +279,10 @@ void MainWindow::on_aboutAction_triggered()
                        tr("This program is intended to download audio albums from <a href=\"https://www.youtube.com\">YouTube</a>. It downloads "
                           "audio file using <a href=\"https://youtube-dl.org\">youtube-dl</a> and generates "
                           "Cue Sheet with metadata.") + "<br><br>"+
-                       tr("Qt version: %1 (Compiled with %2)").arg(qVersion()).arg(QT_VERSION_STR) + "<br>"+
+                       tr("Qt version: %1 (compiled with %2)").arg(qVersion()).arg(QT_VERSION_STR) + "<br>"+
                        tr("youtube-dl version: %1").arg(version) + "<br><br>" +
                        tr("Written by: Ilya Kotov &lt;iokotov@astralinux.ru&gt;")  + "<br>" +
-                       tr("Official home page: <a href=\"https://github.com/trialuser02/ytbtocue\">"
+                       tr("Home page: <a href=\"https://github.com/trialuser02/ytbtocue\">"
                           "https://github.com/trialuser02/ytbtocue</a>"));
 }
 
