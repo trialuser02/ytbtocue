@@ -227,6 +227,9 @@
            <property name="text">
             <string>Add</string>
            </property>
+           <property name="icon">
+            <iconset theme="list-add"/>
+           </property>
           </widget>
          </item>
          <item>
@@ -234,12 +237,18 @@
            <property name="text">
             <string>Add from text</string>
            </property>
+           <property name="icon">
+            <iconset theme="list-add"/>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="removeTrackButton">
            <property name="text">
             <string>Remove</string>
+           </property>
+           <property name="icon">
+            <iconset theme="list-remove"/>
            </property>
           </widget>
          </item>
@@ -305,12 +314,18 @@
         <property name="text">
          <string>Download</string>
         </property>
+        <property name="icon">
+         <iconset theme="go-up"/>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="cancelButton">
         <property name="text">
          <string>Cancel</string>
+        </property>
+        <property name="icon">
+         <iconset theme="process-stop"/>
         </property>
        </widget>
       </item>
@@ -367,7 +382,8 @@
   </action>
   <action name="saveAsAction">
    <property name="icon">
-    <iconset theme="document-save-as"/>
+    <iconset theme="document-save-as">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Save CUE As...</string>
