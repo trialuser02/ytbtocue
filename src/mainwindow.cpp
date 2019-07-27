@@ -37,6 +37,8 @@
 #include <QFile>
 #include <QSettings>
 #include <QMap>
+#include <QMessageBox>
+#include <QFileDialog>
 #include "tracklistitemdelegate.h"
 #include "mainwindow.h"
 #include "cuemodel.h"
@@ -170,16 +172,9 @@ void MainWindow::on_downloadButton_clicked()
     if(m_ui->formatComboBox->currentIndex() < 0)
         return;
 
+    applyMetaData();
+
     QString codec = m_ui->formatComboBox->currentText();
-    QString ext = m_ui->formatComboBox->currentData().toString();
-
-    m_model->setMetaData(CueModel::PERFORMER, m_ui->albumArtistEdit->text());
-    m_model->setMetaData(CueModel::TITLE, m_ui->albumEdit->text());
-    m_model->setMetaData(CueModel::GENRE, m_ui->genreEdit->text());
-    m_model->setMetaData(CueModel::DATE, m_ui->dateEdit->text());
-    m_model->setMetaData(CueModel::COMMENT, m_ui->commentEdit->text());
-    m_model->setMetaData(CueModel::FILE, m_ui->fileEdit->text() + "." + ext);
-
     QString cueDir = m_ui->outDirLineEdit->text() + "/" + m_title;
     QDir("/").mkpath(cueDir);
     QString cuePath = cueDir + "/" + m_ui->fileEdit->text() + ".cue";
@@ -246,22 +241,47 @@ void MainWindow::on_removeTrackButton_clicked()
 
 void MainWindow::on_saveAsAction_triggered()
 {
-
+    QString path = QFileDialog::getSaveFileName(this, QDir::homePath() + "/" +
+                                                m_ui->fileEdit->text() + ".cue",
+                                                tr("Save CUE As..."), "*.cue");
+    if(!path.isEmpty())
+    {
+        applyMetaData();
+        QFile file(path);
+        file.open(QIODevice::WriteOnly);
+        file.write(m_model->generate());
+    }
 }
 
 void MainWindow::on_exitAction_triggered()
 {
-
+    QApplication::closeAllWindows();
 }
 
 void MainWindow::on_aboutAction_triggered()
 {
+    QProcess p;
+    p.start("youtube-dl --version");
+    p.waitForFinished();
+    QString version = QString::fromLatin1(p.readAll()).trimmed();
+    if(version.isEmpty())
+        version = tr("not found");
 
+    QMessageBox::about(this, tr("About YouTube to CUE Converter"),
+                       QStringLiteral("<b>") + tr("YouTube to CUE Converter %1").arg("0.1") + "</b><br>" +
+                       tr("This program is intended to download audio albums from YouTube. It downloads "
+                          "audio file using <a href=\"https://youtube-dl.org/\">youtube-dl</a> and generates "
+                          "Cue Sheet with metadata.") + "<br><br>"+
+                       tr("Qt version: %1 (Compiled with %2)").arg(qVersion()).arg(QT_VERSION_STR) + "<br>"+
+                       tr("youtube-dl version: %1").arg(version) + "<br><br>" +
+                       tr("Written by: Ilya Kotov &lt;iokotov@astralinux.ru&gt;")  + "<br>" +
+                       tr("Official home page: <a href=\"https://github.com/trialuser02/ytbtocue/\">"
+                          "https://github.com/trialuser02/ytbtocue/</a>"));
 }
 
 void MainWindow::on_aboutQtAction_triggered()
 {
-
+    QMessageBox::aboutQt(this);
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
@@ -290,4 +310,15 @@ void MainWindow::writeSettings()
     settings.setValue("out_dir", m_ui->outDirLineEdit->text());
     settings.setValue("track_list_state", m_ui->treeView->header()->saveState());
     settings.endGroup();
+}
+
+void MainWindow::applyMetaData()
+{
+    QString ext = m_ui->formatComboBox->currentData().toString();
+    m_model->setMetaData(CueModel::PERFORMER, m_ui->albumArtistEdit->text());
+    m_model->setMetaData(CueModel::TITLE, m_ui->albumEdit->text());
+    m_model->setMetaData(CueModel::GENRE, m_ui->genreEdit->text());
+    m_model->setMetaData(CueModel::DATE, m_ui->dateEdit->text());
+    m_model->setMetaData(CueModel::COMMENT, m_ui->commentEdit->text());
+    m_model->setMetaData(CueModel::FILE, m_ui->fileEdit->text() + "." + ext);
 }

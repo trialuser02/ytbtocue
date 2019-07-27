@@ -63,6 +63,7 @@ private:
     void closeEvent(QCloseEvent *) override;
     void readSettings();
     void writeSettings();
+    void applyMetaData();
 
     enum State
     {
