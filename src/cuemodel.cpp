@@ -134,6 +134,16 @@ int CueModel::count() const
     return m_items.count();
 }
 
+int CueModel::offset(int track) const
+{
+    return m_items.at(track).offset;
+}
+
+void CueModel::setOffset(int track, int offset)
+{
+    m_items[track].offset = offset;
+}
+
 void CueModel::addTrack(const QString &performer, const QString &title, int offset)
 {
     qDebug() << performer << title << offset;

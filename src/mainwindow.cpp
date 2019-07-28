@@ -62,7 +62,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     readSettings();
     m_ui->downloadButton->setEnabled(false);
     m_ui->saveAsAction->setEnabled(false);
-
 }
 
 MainWindow::~MainWindow()
@@ -235,6 +234,34 @@ void MainWindow::on_addFromTextButton_clicked()
             m_model->addTrack(m_ui->albumArtistEdit->text(),
                               line.remove(durationRegExp).trimmed(),
                               m.captured(1).toInt() * 60 + m.captured(2).toInt());
+        }
+    }
+
+    //is it duration?
+    bool convert = false;
+    int previousOffset = 0;
+    for(int i = 0; i < m_model->count(); ++i)
+    {
+        if(m_model->offset(i) < previousOffset) //detect duration
+        {
+            convert = true;
+            break;
+        }
+        else
+        {
+            previousOffset = m_model->offset(0);
+        }
+    }
+
+    //convert duration to offset
+    if(convert)
+    {
+        int offset = 0;
+        for(int i = 0; i < m_model->count(); ++i)
+        {
+            int duration = m_model->offset(i);
+            m_model->setOffset(i, offset);
+            offset += duration;
         }
     }
 }

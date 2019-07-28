@@ -47,6 +47,8 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     bool isEmpty() const;
     int count() const;
+    int offset(int track) const;
+    void setOffset(int track, int offset);
     void addTrack(const QString &performer, const QString &title, int offset);
 
     enum MetaDataKey
