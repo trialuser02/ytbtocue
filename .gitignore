@@ -1,2 +1,7 @@
 *.user
 /extras
+.build
+*.qm
+Makefile
+.qmake.stash
+src/ytbtocue
