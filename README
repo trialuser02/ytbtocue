@@ -5,6 +5,7 @@ audio file using youtube-dl and generates Cue Sheet with metadata.
 
 Official home page: https://github.com/trialuser02/ytbtocue
 
+
 Requirements:
 
 - GNU Linux or FreeBSD
@@ -17,3 +18,7 @@ Installation:
 qmake PREFIX=<your installation path>
 make
 make install (under root)
+
+Translation:
+
+Use Transifex service: https://www.transifex.com/projects/p/ytbtocue/
