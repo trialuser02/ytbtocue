@@ -190,7 +190,7 @@ void MainWindow::on_downloadButton_clicked()
 
     QStringList args = {
         "-x", "--audio-format", codec, m_ui->urlEdit->text(),
-        "-o", m_ui->outDirLineEdit->text() + "/%(title)s/" + m_ui->fileEdit->text() + ".%(ext)s",
+        "-o", cueDir + "/" + m_ui->fileEdit->text() + ".%(ext)s",
         "--write-thumbnail"
     };
 
