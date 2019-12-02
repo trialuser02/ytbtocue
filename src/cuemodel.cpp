@@ -198,7 +198,7 @@ QByteArray CueModel::generate()
         out += QString("    TITLE \"%1\"\n").arg(m_items[i].title);
         if(!m_items[i].performer.isEmpty())
             out += QString("    PERFORMER \"%1\"\n").arg(m_items[i].performer);
-        out += QString("    INDEX 01 %1:%2\n").arg(m_items[i].offset / 60,  2, 10, QChar('0'))
+        out += QString("    INDEX 01 %1:%2:00\n").arg(m_items[i].offset / 60,  2, 10, QChar('0'))
                 .arg(m_items[i].offset % 60,  2, 10, QChar('0'));
     }
     return out.toUtf8();
