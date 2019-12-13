@@ -3,3 +3,8 @@ Changelog of the YouTube to CUE Converter
 -----------
 Version 0.1
 * first test release
+
+Version 0.2
+* fixed latest youtube-dl support
+* fixed cue directory name
+* fixed time format
