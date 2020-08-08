@@ -190,7 +190,7 @@ QByteArray CueModel::generate()
     if(!m_metaData.value(TITLE).isEmpty())
         out += QString("TITLE \"%1\"\n").arg(m_metaData.value(TITLE));
     if(!m_metaData.value(FILE).isEmpty())
-        out += QString("FILE \"%1\"\n").arg(m_metaData.value(FILE));
+        out += QString("FILE \"%1\" WAVE\n").arg(m_metaData.value(FILE));
 
     for(int i = 0; i < m_items.count(); ++i)
     {
