@@ -3,6 +3,9 @@ X-Desktop-File-Install-Version=0.11
 Name=YouTube to CUE Converter
 Comment=Download album from YouTube and convert to CUE
 
+Name[nl]=YouTube-naar-cue-conversie
+Comment[nl]=Download albums van YouTube en converteer deze naar cue-bestanden
+
 Name[ru]=Преобразователь YouTube в CUE
 Comment[ru]=Получить альбом с YouTube и сохранить в виде CUE-файла
 
