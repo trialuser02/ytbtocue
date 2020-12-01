@@ -9,7 +9,7 @@ Official home page: https://github.com/trialuser02/ytbtocue
 Requirements:
 
 - GNU Linux or FreeBSD
-- youtube-dl >= 2020.09.20 with applied ytb-fix-empty-chapters.patch (see patches/ directory)
+- youtube-dl >= 2020.11.29
 - qtbase >= 5.10.0
 - qttools >= 5.10.0 (For build only)
 
