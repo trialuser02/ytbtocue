@@ -295,7 +295,7 @@ void MainWindow::on_exitAction_triggered()
 void MainWindow::on_aboutAction_triggered()
 {
     QProcess p;
-    p.start("youtube-dl --version");
+    p.start("youtube-dl", { "--version" });
     p.waitForFinished();
     QString version = QString::fromLatin1(p.readAll()).trimmed();
     if(version.isEmpty())
