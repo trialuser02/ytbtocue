@@ -3,11 +3,17 @@ X-Desktop-File-Install-Version=0.11
 Name=YouTube to CUE Converter
 Comment=Download album from YouTube and convert to CUE
 
+Name[ko]=YouTube ⇝ CUE 변환기
+Comment[ko]=YouTube에서 앨범을 다운로드하고 CUE로 변환
+
 Name[nl]=YouTube-naar-cue-conversie
 Comment[nl]=Download albums van YouTube en converteer deze naar cue-bestanden
 
 Name[ru]=Преобразователь YouTube в CUE
 Comment[ru]=Получить альбом с YouTube и сохранить в виде CUE-файла
+
+Name[uk_UA]=Перетворювач YouTube в CUE
+Comment[uk_UA]=Отримати альбом з YouTube та зберегти у вигляді CUE-файлу
 
 Exec=ytbtocue
 Icon=emblem-downloads
