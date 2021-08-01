@@ -1,0 +1,17 @@
+[Desktop Entry]
+X-Desktop-File-Install-Version=0.11
+Name=YouTube to CUE Converter
+Comment=Download album from YouTube and convert to CUE
+
+
+Exec=ytbtocue
+Icon=emblem-downloads
+Terminal=false
+Type=Application
+Categories=Application;Network;Qt;
+
+
+# Translations
+Icon[uk_UA]=emblem-downloads
+Name[uk_UA]=Перетворювач YouTube в CUE
+Comment[uk_UA]=Отримати альбом з YouTube та зберегти у вигляді CUE-файлу
