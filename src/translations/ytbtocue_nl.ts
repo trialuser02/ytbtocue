@@ -138,7 +138,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="405"/>
-        <location filename="../mainwindow.cpp" line="278"/>
+        <location filename="../mainwindow.cpp" line="280"/>
         <source>Save CUE As...</source>
         <translation>CUE opslaan als...</translation>
     </message>
@@ -158,72 +158,72 @@
         <translation>Albumartiest:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="100"/>
+        <location filename="../mainwindow.cpp" line="103"/>
         <source>%1 MiB | %2 KiB/s | ETA: %3</source>
         <translation>%1 MiB | %2 KiB/s | Afgerond: %3</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="171"/>
+        <location filename="../mainwindow.cpp" line="174"/>
         <source>Finished</source>
         <translation>Afgerond</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="208"/>
+        <location filename="../mainwindow.cpp" line="210"/>
         <source>Stopped</source>
         <translation>Afgebroken</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="221"/>
         <source>Add track list</source>
         <translation>Lijst met nummers toevoegen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="302"/>
+        <location filename="../mainwindow.cpp" line="311"/>
+        <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="314"/>
+        <source>%1 version: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="393"/>
         <source>not found</source>
         <translation>niet aangetroffen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="304"/>
+        <location filename="../mainwindow.cpp" line="309"/>
         <source>About YouTube to CUE Converter</source>
         <translation>Over YouTube-naar-cue-conversie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="305"/>
+        <location filename="../mainwindow.cpp" line="310"/>
         <source>YouTube to CUE Converter %1</source>
         <translation>YouTube-naar-cue-conversie %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="306"/>
-        <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using &lt;a href=&quot;https://youtube-dl.org&quot;&gt;youtube-dl&lt;/a&gt; and generates Cue Sheet with metadata.</source>
-        <translation>Met dit programma kun je audio-albums downloaden van &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube.&lt;/a&gt; De audiobestanden worden opgehaald middels &lt;a href=&quot;https://youtube-dl.org&quot;&gt;youtube-dl&lt;/a&gt; en er wordt een cueblad met metagegevens opgesteld.</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="313"/>
         <source>Qt version: %1 (compiled with %2)</source>
         <translation>Qt-versie: %1 (gebouwd met %2)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="312"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Home page: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</source>
         <translation>Website: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="327"/>
         <source>Select Output Directory</source>
         <translation>Uitvoermap kiezen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
-        <source>youtube-dl version: %1</source>
-        <translation>youtube-dl-versie: %1</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="221"/>
         <source>Titles and offsets:</source>
         <translation>Titels en compensaties:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="315"/>
         <source>Written by: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</source>
         <translation>Gemaakt door: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</translation>
     </message>
