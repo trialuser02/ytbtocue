@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Ilya Kotov <iokotov@astralinux.ru>
+ * Copyright (c) 2019-2021, Ilya Kotov <iokotov@astralinux.ru>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -79,10 +79,13 @@ void MainWindow::on_fetchButton_clicked()
     if(m_ui->urlEdit->text().isEmpty())
         return;
 
+    if(!findBackend())
+        return;
+
     m_model->clear();
     m_ui->formatComboBox->clear();
     QStringList args = { "-j", m_ui->urlEdit->text() };
-    m_process->start("youtube-dl", args);
+    m_process->start(m_backend, args);
     m_state = Fetching;
 }
 
@@ -175,11 +178,10 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
 void MainWindow::on_downloadButton_clicked()
 {
-    if(m_ui->formatComboBox->currentIndex() < 0)
+    if(m_ui->formatComboBox->currentIndex() < 0 || !findBackend())
         return;
 
     applyMetaData();
-
     QString codec = m_ui->formatComboBox->currentText();
     QString cueDir = m_ui->outDirLineEdit->text() + "/" + m_title;
     QDir("/").mkpath(cueDir);
@@ -195,7 +197,7 @@ void MainWindow::on_downloadButton_clicked()
     };
 
     m_state = Downloading;
-    m_process->start("youtube-dl", args);
+    m_process->start(m_backend, args);
 }
 
 void MainWindow::on_cancelButton_clicked()
@@ -294,20 +296,22 @@ void MainWindow::on_exitAction_triggered()
 
 void MainWindow::on_aboutAction_triggered()
 {
-    QProcess p;
-    p.start("youtube-dl", { "--version" });
-    p.waitForFinished();
-    QString version = QString::fromLatin1(p.readAll()).trimmed();
-    if(version.isEmpty())
-        version = tr("not found");
+    if(!findBackend())
+        return;
+
+    QString backendName = QString("<b>%1</b>").arg(m_backend);
+
+    if(m_backend == QStringLiteral("yt-dlp"))
+        backendName = QStringLiteral("<a href=\"https://github.com/yt-dlp/yt-dlp\">yt-dlp</a>");
+    else if(m_backend == QStringLiteral("youtube-dl"))
+        backendName = QStringLiteral("<a href=\"https://youtube-dl.org\">youtube-dl</a>");
 
     QMessageBox::about(this, tr("About YouTube to CUE Converter"),
                        QStringLiteral("<b>") + tr("YouTube to CUE Converter %1").arg(YTBTOCUE_VERSION_STR) + "</b><br>" +
                        tr("This program is intended to download audio albums from <a href=\"https://www.youtube.com\">YouTube</a>. It downloads "
-                          "audio file using <a href=\"https://youtube-dl.org\">youtube-dl</a> and generates "
-                          "Cue Sheet with metadata.") + "<br><br>"+
+                          "audio file using %1 and generates Cue Sheet with metadata.").arg(backendName) + "<br><br>"+
                        tr("Qt version: %1 (compiled with %2)").arg(qVersion()).arg(QT_VERSION_STR) + "<br>"+
-                       tr("youtube-dl version: %1").arg(version) + "<br><br>" +
+                       tr("%1 version: %2").arg(m_backend).arg(m_version) + "<br><br>" +
                        tr("Written by: Ilya Kotov &lt;iokotov@astralinux.ru&gt;")  + "<br>" +
                        tr("Home page: <a href=\"https://github.com/trialuser02/ytbtocue\">"
                           "https://github.com/trialuser02/ytbtocue</a>"));
@@ -362,4 +366,31 @@ void MainWindow::applyMetaData()
     m_model->setMetaData(CueModel::DATE, m_ui->dateEdit->text());
     m_model->setMetaData(CueModel::COMMENT, m_ui->commentEdit->text());
     m_model->setMetaData(CueModel::FILE, m_ui->fileEdit->text() + "." + ext);
+}
+
+bool MainWindow::findBackend()
+{
+    if(!m_backend.isEmpty())
+        return true;
+
+    static const QStringList backends = { "yt-dlp", "youtube-dl" };
+
+    for(const QString &backend : qAsConst(backends))
+    {
+        QProcess p;
+        p.start(backend, { "--version" });
+        p.waitForFinished();
+        if(p.exitCode() == EXIT_SUCCESS)
+        {
+            m_backend = backend;
+            m_version = QString::fromLatin1(p.readAll()).trimmed();
+            qDebug() << "using" << m_backend << m_version;
+            return true;
+        }
+    }
+
+    if(m_version.isEmpty())
+        m_version = tr("not found");
+
+    return false;
 }

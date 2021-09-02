@@ -65,6 +65,7 @@ private:
     void readSettings();
     void writeSettings();
     void applyMetaData();
+    bool findBackend();
 
     enum State
     {
@@ -79,6 +80,7 @@ private:
     CueModel *m_model;
     QString m_title;
     State m_state = Idle;
+    QString m_backend, m_version;
 };
 
 #endif // MAINWINDOW_H
