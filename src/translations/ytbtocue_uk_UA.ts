@@ -188,11 +188,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="393"/>
-        <source>not found</source>
-        <translation>не знайдено</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="309"/>
         <source>About YouTube to CUE Converter</source>
         <translation>Про перетворювач YouTube в CUE</translation>

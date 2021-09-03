@@ -188,11 +188,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="393"/>
-        <source>not found</source>
-        <translation>찾을 수 없음</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="309"/>
         <source>About YouTube to CUE Converter</source>
         <translation>YouTube ⇝ CUE 변환기 정보</translation>
