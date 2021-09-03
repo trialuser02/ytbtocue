@@ -389,8 +389,5 @@ bool MainWindow::findBackend()
         }
     }
 
-    if(m_version.isEmpty())
-        m_version = tr("not found");
-
     return false;
 }
