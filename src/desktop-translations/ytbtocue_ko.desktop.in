@@ -4,6 +4,9 @@ Name=YouTube to CUE Converter
 Comment=Download album from YouTube and convert to CUE
 
 
+
+
+
 Exec=ytbtocue
 Icon=emblem-downloads
 Terminal=false

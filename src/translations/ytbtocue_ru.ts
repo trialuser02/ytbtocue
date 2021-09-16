@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.1" language="ru">
 <context>
     <name>CueModel</name>
     <message>
@@ -180,12 +180,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
-        <translation type="unfinished"></translation>
+        <translation>Данная программа предназначена для скачивания альбомов с &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. В процессе работы происходит скачивание аудио-файла с помощью %1 и создание CUE-файла с метаданными.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="314"/>
         <source>%1 version: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия %1: %2</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="309"/>

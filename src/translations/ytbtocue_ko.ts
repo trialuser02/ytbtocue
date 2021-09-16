@@ -180,12 +180,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
-        <translation type="unfinished"></translation>
+        <translation>이 프로그램은 &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;에서 오디오 앨범을 다운로드하기 위한 것입니다. %1을(를) 사용하여 오디오 파일을 다운로드하고 메타데이터가 있는 Cue Sheet를 생성합니다.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="314"/>
         <source>%1 version: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 버전: %2</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="309"/>

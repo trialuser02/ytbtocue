@@ -180,12 +180,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
-        <translation type="unfinished"></translation>
+        <translation>Met dit programma kun je audio-albums downloaden van &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube.&lt;/a&gt; De audiobestanden worden opgehaald middels %1 en er wordt een cueblad met metagegevens opgesteld.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="314"/>
         <source>%1 version: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1-versie: %2</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="309"/>

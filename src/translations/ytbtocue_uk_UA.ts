@@ -185,7 +185,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="314"/>
         <source>%1 version: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 версія: %2</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="309"/>
