@@ -3,6 +3,9 @@ X-Desktop-File-Install-Version=0.11
 Name=YouTube to CUE Converter
 Comment=Download album from YouTube and convert to CUE
 
+Name[fi]=YouTube - CUE Converter
+Comment[fi]=Lataa albumi YouTubesta ja muunna CUE:ksi
+
 Name[ko]=YouTube ⇝ CUE 변환기
 Comment[ko]=YouTube에서 앨범을 다운로드하고 CUE로 변환
 
