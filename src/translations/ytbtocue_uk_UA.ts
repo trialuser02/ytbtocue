@@ -180,7 +180,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="311"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ця програма призначена для завантаження альбомів з &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. У процесі роботи відбувається стягування авдіофайлу за допомогою %1 й створення CUE-файлу з метаданими.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="314"/>
