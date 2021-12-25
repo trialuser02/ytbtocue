@@ -79,7 +79,7 @@ void MainWindow::on_fetchButton_clicked()
     if(m_ui->urlEdit->text().isEmpty())
         return;
 
-    if(!findBackend())
+    if(m_process->state() == QProcess::Running || !findBackend())
         return;
 
     m_model->clear();
