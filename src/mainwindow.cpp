@@ -135,7 +135,10 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         QString album = json["album"].toString();
         QString artist = json["artist"].toString();
         QString date = json["upload_date"].toString();
+        QString description = json["description"].toString();
         int duration = json["duration"].toInt();
+
+
 
         if(album.isEmpty() || artist.isEmpty())
         {
@@ -161,6 +164,11 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
             m_model->addTrack(artist, value["title"].toString().remove(titleRegexp).trimmed(),
                     value["start_time"].toInt());
         }
+
+        QRegularExpression descriptionRegexp("[Gg]enre:\\s+([A-Z,/,a-z,\\s]+)\\\n");
+        QRegularExpressionMatch match = descriptionRegexp.match(description);
+        if(match.hasMatch())
+            m_ui->genreEdit->setText((match.captured(1).trimmed()));
 
         m_ui->durationLabel->setText(Utils::formatDuration(duration));
 
