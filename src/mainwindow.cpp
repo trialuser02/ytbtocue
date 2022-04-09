@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2022-2022, Ilya Kotov <iokotov@astralinux.ru>
+ * Copyright (c) 2019-2022, Ilya Kotov <iokotov@astralinux.ru>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -180,6 +180,7 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     else if(m_state == Downloading)
     {
         m_ui->statusbar->showMessage(tr("Finished"));
+        m_ui->progressBar->setValue(100);
     }
     m_state = Idle;
 }
@@ -206,6 +207,7 @@ void MainWindow::on_downloadButton_clicked()
 
     m_state = Downloading;
     m_process->start(m_backend, args);
+    m_ui->progressBar->setValue(0);
 }
 
 void MainWindow::on_cancelButton_clicked()
