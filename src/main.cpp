@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2022, Ilya Kotov <iokotov@astralinux.ru>
+ * Copyright (c) 2019-2023, Ilya Kotov <iokotov@astralinux.ru>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
