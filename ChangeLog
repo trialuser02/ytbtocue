@@ -16,3 +16,11 @@ Version 0.3
 * added Ukrainian translation (Koljan1970)
 * added Korean translation (Jung Hee Lee)
 * added Finnish translation (Kimmo Kujansuu)
+
+Version 0.4
+* added Qt6 support
+* added feature to extract genre from description
+* added yt-dlp process checking
+* fixed progressbar issues
+* fixed yt-dlp output parsing
+* updated Russian translation
