@@ -41,14 +41,14 @@ QVariant CueModel::headerData(int section, Qt::Orientation orientation, int role
 
     if(section == 0)
         return tr("Track");
-    else if(section == 1)
+    if(section == 1)
         return tr("Performer");
-    else if(section == 2)
+    if(section == 2)
         return tr("Title");
-    else if(section == 3)
+    if(section == 3)
         return tr("Offset");
-    else
-        return QString();
+
+    return QString();
 }
 
 int CueModel::rowCount(const QModelIndex &parent) const
@@ -73,13 +73,13 @@ QVariant CueModel::data(const QModelIndex &index, int role) const
 
     if(column == 0)
         return QString::number(row + 1);
-    else if(column == 1)
+    if(column == 1)
         return m_items[row].performer;
-    else if(column == 2)
+    if(column == 2)
         return m_items[row].title;
-    else if(column == 3 && role == Qt::DisplayRole)
+    if(column == 3 && role == Qt::DisplayRole)
         return Utils::formatDuration(m_items[row].offset);
-    else if(column == 3 && role == Qt::EditRole)
+    if(column == 3 && role == Qt::EditRole)
         return QTime(0, 0).addSecs(m_items[row].offset);
 
     return QVariant();
@@ -99,13 +99,13 @@ bool CueModel::setData(const QModelIndex &index, const QVariant &value, int role
         emit dataChanged(index, index, { role });
         return true;
     }
-    else if(column == 2)
+    if(column == 2)
     {
         m_items[row].title = value.toString();
         emit dataChanged(index, index, { role });
         return true;
     }
-    else if(column == 3)
+    if(column == 3)
     {
         QTime time = value.toTime();
         m_items[row].offset = time.hour() * 3600 + time.minute() * 60 + time.second();

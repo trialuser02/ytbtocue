@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_process = new QProcess(this);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), SLOT(onFinished(int,QProcess::ExitStatus)));
     connect(m_process, SIGNAL(readyRead()), SLOT(onReadyRead()));
-    connect(m_model, &CueModel::countChanged, [=] {
+    connect(m_model, &CueModel::countChanged, this, [=] {
         m_ui->downloadButton->setEnabled(!m_model->isEmpty());
         m_ui->saveAsAction->setEnabled(!m_model->isEmpty());
     });
@@ -100,10 +100,7 @@ void MainWindow::onReadyRead()
         if(m.isValid() && m.hasMatch())
         {
             m_ui->progressBar->setValue(int(m.captured(1).toDouble()));
-            m_ui->statusbar->showMessage(tr("%1 MiB | %2 KiB/s | ETA: %3")
-                                         .arg(m.captured(2))
-                                         .arg(m.captured(3))
-                                         .arg(m.captured(4)));
+            m_ui->statusbar->showMessage(tr("%1 MiB | %2 KiB/s | ETA: %3").arg(m.captured(2), m.captured(3), m.captured(4)));
         }
     }
 }
@@ -165,7 +162,7 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
                     value["start_time"].toInt());
         }
 
-        QRegularExpression descriptionRegexp("[Gg]enre:\\s+([A-Z,/,a-z,\\s]+)\\\n");
+        static const QRegularExpression descriptionRegexp("[Gg]enre:\\s+([A-Z,/,a-z,\\s]+)\\\n");
         QRegularExpressionMatch match = descriptionRegexp.match(description);
         if(match.hasMatch())
             m_ui->genreEdit->setText((match.captured(1).trimmed()));
@@ -229,7 +226,7 @@ void MainWindow::on_addTrackButton_clicked()
 void MainWindow::on_addFromTextButton_clicked()
 {
     QString text = QInputDialog::getMultiLineText(this, tr("Add track list"), tr("Titles and offsets:"));
-    QRegularExpression durationRegExp("(\\d+)\\:(\\d+)");
+    static const QRegularExpression durationRegExp("(\\d+)\\:(\\d+)");
 
     if(text.isEmpty())
         return;
@@ -259,10 +256,8 @@ void MainWindow::on_addFromTextButton_clicked()
             convert = true;
             break;
         }
-        else
-        {
-            previousOffset = m_model->offset(0);
-        }
+
+        previousOffset = m_model->offset(0);
     }
 
     //convert duration to offset
@@ -320,8 +315,8 @@ void MainWindow::on_aboutAction_triggered()
                        QStringLiteral("<b>") + tr("YouTube to CUE Converter %1").arg(YTBTOCUE_VERSION_STR) + "</b><br>" +
                        tr("This program is intended to download audio albums from <a href=\"https://www.youtube.com\">YouTube</a>. It downloads "
                           "audio file using %1 and generates Cue Sheet with metadata.").arg(backendName) + "<br><br>"+
-                       tr("Qt version: %1 (compiled with %2)").arg(qVersion()).arg(QT_VERSION_STR) + "<br>"+
-                       tr("%1 version: %2").arg(m_backend).arg(m_version) + "<br><br>" +
+                       tr("Qt version: %1 (compiled with %2)").arg(qVersion(), QT_VERSION_STR) + "<br>"+
+                       tr("%1 version: %2").arg(m_backend, m_version) + "<br><br>" +
                        tr("Written by: Ilya Kotov &lt;iokotov@astralinux.ru&gt;")  + "<br>" +
                        tr("Home page: <a href=\"https://github.com/trialuser02/ytbtocue\">"
                           "https://github.com/trialuser02/ytbtocue</a>"));
