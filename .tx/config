@@ -1,13 +1,13 @@
 [main]
 host = https://www.transifex.com
 
-[ytbtocue.ytbtocue]
+[o:qmmp-development-team:p:ytbtocue:r:ytbtocue]
 file_filter = src/translations/ytbtocue_<lang>.ts
 source_lang = en
 source_file = src/translations/ytbtocue_en.ts
 type = QT
 
-[ytbtocue.ytbtocue-desktop]
+[o:qmmp-development-team:p:ytbtocue:r:ytbtocue-desktop]
 file_filter = src/desktop-translations/ytbtocue_<lang>.desktop.in
 source_lang = en
 source_file = src/ytbtocue.desktop
