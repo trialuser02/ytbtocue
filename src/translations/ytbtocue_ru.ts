@@ -138,7 +138,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="405"/>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="287"/>
         <source>Save CUE As...</source>
         <translation>Сохранить CUE как...</translation>
     </message>
@@ -158,67 +158,77 @@
         <translation>Исполнитель альбома:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="103"/>
-        <source>%1 MiB | %2 KiB/s | ETA: %3</source>
-        <translation>%1 МиБ | %2 КиБ/с | Осталось: %3</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="174"/>
+        <location filename="../mainwindow.cpp" line="181"/>
         <source>Finished</source>
         <translation>Завершено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="210"/>
+        <location filename="../mainwindow.cpp" line="219"/>
         <source>Stopped</source>
         <translation>Остановлено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="230"/>
         <source>Add track list</source>
         <translation>Добавить список треков</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="318"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
         <translation>Данная программа предназначена для скачивания альбомов с &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. В процессе работы происходит скачивание аудио-файла с помощью %1 и создание CUE-файла с метаданными.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="321"/>
         <source>%1 version: %2</source>
         <translation>Версия %1: %2</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>About YouTube to CUE Converter</source>
         <translation>О преобразователе YouTube в CUE</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
+        <location filename="../mainwindow.cpp" line="103"/>
+        <source>%1 MiB | %2 %3 | ETA: %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="104"/>
+        <source>KiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="104"/>
+        <source>MiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="317"/>
         <source>YouTube to CUE Converter %1</source>
         <translation>Преобразователь YouTube в CUE %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="313"/>
+        <location filename="../mainwindow.cpp" line="320"/>
         <source>Qt version: %1 (compiled with %2)</source>
         <translation>Версия Qt: %1 (собрано с %2)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="316"/>
+        <location filename="../mainwindow.cpp" line="323"/>
         <source>Home page: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</source>
         <translation>Домашняя страница: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="327"/>
+        <location filename="../mainwindow.cpp" line="334"/>
         <source>Select Output Directory</source>
         <translation>Выберите выходной каталог</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="230"/>
         <source>Titles and offsets:</source>
         <translation>Названия и смещения:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="322"/>
         <source>Written by: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</source>
         <translation>Разработчик: Илья Котов &amp;lt;iokotov@astralinux.ru&amp;gt;</translation>
     </message>

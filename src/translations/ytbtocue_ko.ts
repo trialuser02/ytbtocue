@@ -138,7 +138,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="405"/>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="287"/>
         <source>Save CUE As...</source>
         <translation>다른 이름으로 CUE 저장...</translation>
     </message>
@@ -158,67 +158,77 @@
         <translation>앨범 아티스트:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="103"/>
-        <source>%1 MiB | %2 KiB/s | ETA: %3</source>
-        <translation>%1 MiB | %2 KiB/s | ETA: %3</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="174"/>
+        <location filename="../mainwindow.cpp" line="181"/>
         <source>Finished</source>
         <translation>완료됨</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="210"/>
+        <location filename="../mainwindow.cpp" line="219"/>
         <source>Stopped</source>
         <translation>중지됨</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="230"/>
         <source>Add track list</source>
         <translation>트랙 목록 추가</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="318"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
         <translation>이 프로그램은 &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;에서 오디오 앨범을 다운로드하기 위한 것입니다. %1을(를) 사용하여 오디오 파일을 다운로드하고 메타데이터가 있는 Cue Sheet를 생성합니다.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="314"/>
+        <location filename="../mainwindow.cpp" line="321"/>
         <source>%1 version: %2</source>
         <translation>%1 버전: %2</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>About YouTube to CUE Converter</source>
         <translation>YouTube ⇝ CUE 변환기 정보</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
+        <location filename="../mainwindow.cpp" line="103"/>
+        <source>%1 MiB | %2 %3 | ETA: %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="104"/>
+        <source>KiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="104"/>
+        <source>MiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="317"/>
         <source>YouTube to CUE Converter %1</source>
         <translation>YouTube ⇝ CUE 변환기 %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="313"/>
+        <location filename="../mainwindow.cpp" line="320"/>
         <source>Qt version: %1 (compiled with %2)</source>
         <translation>Qt 버전: %1 (%2로 컴파일됨)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="316"/>
+        <location filename="../mainwindow.cpp" line="323"/>
         <source>Home page: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</source>
         <translation>홈페이지: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="327"/>
+        <location filename="../mainwindow.cpp" line="334"/>
         <source>Select Output Directory</source>
         <translation>출력 디렉토리 선택</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="221"/>
+        <location filename="../mainwindow.cpp" line="230"/>
         <source>Titles and offsets:</source>
         <translation>제목 및 오프셋:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="315"/>
+        <location filename="../mainwindow.cpp" line="322"/>
         <source>Written by: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</source>
         <translation>작성자: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</translation>
     </message>
