@@ -41,12 +41,17 @@ int main(int argc, char **argv)
 
     QTranslator translator;
     QString locale = QLocale::system().name();
-    translator.load(QString(":/ytbtocue_") + locale);
-    app.installTranslator(&translator);
+    if(translator.load(QString(":/ytbtocue_") + locale))
+        app.installTranslator(&translator);
 
     QTranslator qt_translator;
-    qt_translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qtbase_" + locale);
-    app.installTranslator(&qt_translator);
+#if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
+    if(qt_translator.load(QLibraryInfo::path(QLibraryInfo::TranslationsPath) + "/qtbase_" + locale))
+        app.installTranslator(&qt_translator);
+#else
+    if(qt_translator.load(QLibraryInfo::location(QLibraryInfo::TranslationsPath) + "/qtbase_" + locale))
+        app.installTranslator(&qt_translator);
+#endif
 
     MainWindow w;
     w.show();
