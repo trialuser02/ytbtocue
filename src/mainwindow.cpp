@@ -94,13 +94,15 @@ void MainWindow::onReadyRead()
     if(m_state == Downloading)
     {
         QString line = QString::fromLatin1(m_process->readAll()).trimmed();
-        static QRegularExpression progressRegexp("^\\[download\\]\\s+(\\d+\\.\\d+)%\\s+of\\s+~*(\\d+\\.\\d+)MiB"
-                                                 "\\s+at\\s+(\\d+\\.\\d+)KiB/s\\s+ETA\\s+(\\d+:\\d+)");
+        static QRegularExpression progressRegexp("^\\[download\\]\\s+(\\d+\\.\\d+)%\\s+of\\s+~\\s*(\\d+\\.\\d+)MiB"
+                                                 "\\s+at\\s+(\\d+\\.\\d+)([MK]iB/s)\\s+ETA\\s+(\\d+:\\d+)\\s*.*");
         QRegularExpressionMatch m = progressRegexp.match(line);
         if(m.isValid() && m.hasMatch())
         {
             m_ui->progressBar->setValue(int(m.captured(1).toDouble()));
-            m_ui->statusbar->showMessage(tr("%1 MiB | %2 KiB/s | ETA: %3").arg(m.captured(2), m.captured(3), m.captured(4)));
+            m_ui->statusbar->showMessage(tr("%1 MiB | %2 %3 | ETA: %4").arg(m.captured(2), m.captured(3),
+                                                                            m.captured(4).startsWith("KiB") ? tr("KiB/s") : tr("MiB/s"),
+                                                                            m.captured(5)));
         }
     }
 }
@@ -154,7 +156,7 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         m_ui->dateEdit->setText(date.mid(0, 4));
         m_ui->commentEdit->setText(m_ui->urlEdit->text());
 
-        QRegularExpression titleRegexp("^\\d+\\.\\s");
+        static const QRegularExpression titleRegexp("^\\d+\\.\\s");
 
         for(const QJsonValue &value : json["chapters"].toArray())
         {
