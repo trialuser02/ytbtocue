@@ -11,7 +11,7 @@
     <message>
         <location filename="../cuemodel.cpp" line="45"/>
         <source>Performer</source>
-        <translation>연주기</translation>
+        <translation>연주자</translation>
     </message>
     <message>
         <location filename="../cuemodel.cpp" line="47"/>
@@ -190,17 +190,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="103"/>
         <source>%1 MiB | %2 %3 | ETA: %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 MiB | %2 %3 | ETA: %4</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="104"/>
         <source>KiB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB/s</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="104"/>
         <source>MiB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>MiB/s</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="317"/>
