@@ -94,7 +94,7 @@ void MainWindow::onReadyRead()
     if(m_state == Downloading)
     {
         QString line = QString::fromLatin1(m_process->readAll()).trimmed();
-        static QRegularExpression progressRegexp("^\\[download\\]\\s+(\\d+\\.\\d+)%\\s+of\\s+~\\s*(\\d+\\.\\d+)MiB"
+        static QRegularExpression progressRegexp("^\\[download\\]\\s+(\\d+\\.\\d+)%\\s+of\\s+~{0,1}\\s*(\\d+\\.\\d+)MiB"
                                                  "\\s+at\\s+(\\d+\\.\\d+)([MK]iB/s)\\s+ETA\\s+(\\d+:\\d+)\\s*.*");
         QRegularExpressionMatch m = progressRegexp.match(line);
         if(m.isValid() && m.hasMatch())
