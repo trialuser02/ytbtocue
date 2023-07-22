@@ -25,3 +25,7 @@ Version 0.4
 * fixed yt-dlp output parsing
 * updated Russian translation
 * updated Dutch translation (Heimen Stoffels)
+
+Version 0.5
+* fixed latest yt-dlp output parsing
+* added Korean translation (Jung Hee Lee)
