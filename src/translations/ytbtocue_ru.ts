@@ -124,7 +124,7 @@
     <message>
         <location filename="../mainwindow.ui" line="378"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Правка</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="393"/>
@@ -150,7 +150,7 @@
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Настройки</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="88"/>
@@ -248,47 +248,47 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>YouTube to CUE Converter Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки преобразователя YouTube в CUE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="20"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Прокси</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать прокси</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Host name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Узел:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Порт:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="101"/>
         <source>User name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="111"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Extra command-line arguments:</source>
-        <translation type="unfinished"></translation>
+        <translation>Доп. аргументы командной строки:</translation>
     </message>
 </context>
 </TS>

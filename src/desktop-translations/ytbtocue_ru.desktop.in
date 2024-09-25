@@ -16,6 +16,6 @@ Categories=Application;Network;Qt;
 
 
 # Translations
-Icon[ru]=emblem-downloads
 Name[ru]=Преобразователь YouTube в CUE
 Comment[ru]=Получить альбом с YouTube и сохранить в виде CUE-файла
+Icon[ru]=emblem-downloads
