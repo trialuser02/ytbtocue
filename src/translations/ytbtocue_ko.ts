@@ -122,25 +122,35 @@
         <translation>도움말(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="386"/>
+        <location filename="../mainwindow.ui" line="378"/>
+        <source>&amp;Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="393"/>
         <source>&amp;Exit</source>
         <translation>종료(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="391"/>
+        <location filename="../mainwindow.ui" line="398"/>
         <source>About...</source>
         <translation>정보...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="396"/>
+        <location filename="../mainwindow.ui" line="403"/>
         <source>About Qt</source>
         <translation>Qt 정보</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="405"/>
-        <location filename="../mainwindow.cpp" line="287"/>
+        <location filename="../mainwindow.ui" line="412"/>
+        <location filename="../mainwindow.cpp" line="295"/>
         <source>Save CUE As...</source>
         <translation>다른 이름으로 CUE 저장...</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="420"/>
+        <source>&amp;Settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="88"/>
@@ -158,79 +168,127 @@
         <translation>앨범 아티스트:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="181"/>
+        <location filename="../mainwindow.cpp" line="182"/>
         <source>Finished</source>
         <translation>완료됨</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="227"/>
         <source>Stopped</source>
         <translation>중지됨</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="230"/>
+        <location filename="../mainwindow.cpp" line="238"/>
         <source>Add track list</source>
         <translation>트랙 목록 추가</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="318"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
         <translation>이 프로그램은 &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;에서 오디오 앨범을 다운로드하기 위한 것입니다. %1을(를) 사용하여 오디오 파일을 다운로드하고 메타데이터가 있는 Cue Sheet를 생성합니다.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="321"/>
+        <location filename="../mainwindow.cpp" line="329"/>
         <source>%1 version: %2</source>
         <translation>%1 버전: %2</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="316"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>About YouTube to CUE Converter</source>
         <translation>YouTube ⇝ CUE 변환기 정보</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="103"/>
+        <location filename="../mainwindow.cpp" line="106"/>
         <source>%1 MiB | %2 %3 | ETA: %4</source>
         <translation>%1 MiB | %2 %3 | ETA: %4</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="104"/>
+        <location filename="../mainwindow.cpp" line="107"/>
         <source>KiB/s</source>
         <translation>KiB/s</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="104"/>
+        <location filename="../mainwindow.cpp" line="107"/>
         <source>MiB/s</source>
         <translation>MiB/s</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="317"/>
+        <location filename="../mainwindow.cpp" line="325"/>
         <source>YouTube to CUE Converter %1</source>
         <translation>YouTube ⇝ CUE 변환기 %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="328"/>
         <source>Qt version: %1 (compiled with %2)</source>
         <translation>Qt 버전: %1 (%2로 컴파일됨)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="331"/>
         <source>Home page: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</source>
         <translation>홈페이지: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="334"/>
+        <location filename="../mainwindow.cpp" line="342"/>
         <source>Select Output Directory</source>
         <translation>출력 디렉토리 선택</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="230"/>
+        <location filename="../mainwindow.cpp" line="238"/>
         <source>Titles and offsets:</source>
         <translation>제목 및 오프셋:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="330"/>
         <source>Written by: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</source>
         <translation>작성자: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>YouTube to CUE Converter Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="20"/>
+        <source>Proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="32"/>
+        <source>Enable proxy usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="57"/>
+        <source>Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="67"/>
+        <source>Host name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="84"/>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="101"/>
+        <source>User name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="111"/>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="127"/>
+        <source>Extra command-line arguments:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

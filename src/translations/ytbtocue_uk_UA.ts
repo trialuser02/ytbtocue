@@ -122,25 +122,35 @@
         <translation>&amp;Довідка</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="386"/>
+        <location filename="../mainwindow.ui" line="378"/>
+        <source>&amp;Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="393"/>
         <source>&amp;Exit</source>
         <translation>&amp;Вийти</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="391"/>
+        <location filename="../mainwindow.ui" line="398"/>
         <source>About...</source>
         <translation>Про...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="396"/>
+        <location filename="../mainwindow.ui" line="403"/>
         <source>About Qt</source>
         <translation>Про Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="405"/>
-        <location filename="../mainwindow.cpp" line="287"/>
+        <location filename="../mainwindow.ui" line="412"/>
+        <location filename="../mainwindow.cpp" line="295"/>
         <source>Save CUE As...</source>
         <translation>Зберегти CUE як...</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="420"/>
+        <source>&amp;Settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="88"/>
@@ -158,79 +168,127 @@
         <translation>Виконавець альбому:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="181"/>
+        <location filename="../mainwindow.cpp" line="182"/>
         <source>Finished</source>
         <translation>Завершено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="219"/>
+        <location filename="../mainwindow.cpp" line="227"/>
         <source>Stopped</source>
         <translation>Зупинено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="230"/>
+        <location filename="../mainwindow.cpp" line="238"/>
         <source>Add track list</source>
         <translation>Додати перелік доріжок</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="318"/>
+        <location filename="../mainwindow.cpp" line="326"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
         <translation>Ця програма призначена для завантаження альбомів з &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. У процесі роботи відбувається стягування авдіофайлу за допомогою %1 й створення CUE-файлу з метаданими.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="321"/>
+        <location filename="../mainwindow.cpp" line="329"/>
         <source>%1 version: %2</source>
         <translation>%1 версія: %2</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="316"/>
+        <location filename="../mainwindow.cpp" line="324"/>
         <source>About YouTube to CUE Converter</source>
         <translation>Про перетворювач YouTube в CUE</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="103"/>
+        <location filename="../mainwindow.cpp" line="106"/>
         <source>%1 MiB | %2 %3 | ETA: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="104"/>
+        <location filename="../mainwindow.cpp" line="107"/>
         <source>KiB/s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="104"/>
+        <location filename="../mainwindow.cpp" line="107"/>
         <source>MiB/s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="317"/>
+        <location filename="../mainwindow.cpp" line="325"/>
         <source>YouTube to CUE Converter %1</source>
         <translation>Перетворювач YouTube в CUE %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="320"/>
+        <location filename="../mainwindow.cpp" line="328"/>
         <source>Qt version: %1 (compiled with %2)</source>
         <translation>Версія Qt: %1 (зібрано з %2)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="323"/>
+        <location filename="../mainwindow.cpp" line="331"/>
         <source>Home page: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</source>
         <translation>Домашня сторінка: &lt;a href=&quot;https://github.com/trialuser02/ytbtocue&quot;&gt;https://github.com/trialuser02/ytbtocue&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="334"/>
+        <location filename="../mainwindow.cpp" line="342"/>
         <source>Select Output Directory</source>
         <translation>Оберіть вихідну теку</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="230"/>
+        <location filename="../mainwindow.cpp" line="238"/>
         <source>Titles and offsets:</source>
         <translation>Назви та зсуви:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="330"/>
         <source>Written by: Ilya Kotov &amp;lt;iokotov@astralinux.ru&amp;gt;</source>
         <translation>Розробник: Ілля Котов &amp;lt;iokotov@astralinux.ru&amp;gt;</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>YouTube to CUE Converter Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="20"/>
+        <source>Proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="32"/>
+        <source>Enable proxy usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="57"/>
+        <source>Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="67"/>
+        <source>Host name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="84"/>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="101"/>
+        <source>User name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="111"/>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="127"/>
+        <source>Extra command-line arguments:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
