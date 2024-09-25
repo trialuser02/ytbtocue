@@ -43,6 +43,7 @@
 #include "mainwindow.h"
 #include "cuemodel.h"
 #include "utils.h"
+#include "settingsdialog.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
@@ -85,6 +86,8 @@ void MainWindow::on_fetchButton_clicked()
     m_model->clear();
     m_ui->formatComboBox->clear();
     QStringList args = { "-j", m_ui->urlEdit->text() };
+    if(m_proxyUrl.isValid())
+        args << "--proxy" << m_proxyUrl.toString();
     m_process->start(m_backend, args);
     m_state = Fetching;
 }
@@ -136,8 +139,6 @@ void MainWindow::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         QString date = json["upload_date"].toString();
         QString description = json["description"].toString();
         int duration = json["duration"].toInt();
-
-
 
         if(album.isEmpty() || artist.isEmpty())
         {
@@ -203,6 +204,9 @@ void MainWindow::on_downloadButton_clicked()
         "-o", cueDir + "/" + m_ui->fileEdit->text() + ".%(ext)s",
         "--write-thumbnail"
     };
+
+    if(m_proxyUrl.isValid())
+        args << "--proxy" << m_proxyUrl.toString();
 
     m_state = Downloading;
     m_process->start(m_backend, args);
@@ -336,6 +340,13 @@ void MainWindow::on_selectOutDirButton_clicked()
         m_ui->outDirLineEdit->setText(p);
 }
 
+void MainWindow::on_settingsAction_triggered()
+{
+    SettingsDialog dlg(this);
+    if(dlg.exec() == QDialog::Accepted)
+        readSettings();
+}
+
 void MainWindow::closeEvent(QCloseEvent *)
 {
     writeSettings();
@@ -345,12 +356,23 @@ void MainWindow::readSettings()
 {
     QSettings settings;
     settings.beginGroup("General");
-    restoreGeometry(settings.value("mw_geometry").toByteArray());
-    m_ui->urlEdit->setText(settings.value("url").toString());
-    QString musicLocation = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
-    m_ui->outDirLineEdit->setText(settings.value("out_dir", musicLocation).toString());
-    m_ui->treeView->header()->restoreState(settings.value("track_list_state").toByteArray());
+    if(!m_update)
+    {
+        restoreGeometry(settings.value("mw_geometry").toByteArray());
+        m_ui->urlEdit->setText(settings.value("url").toString());
+        QString musicLocation = QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
+        m_ui->outDirLineEdit->setText(settings.value("out_dir", musicLocation).toString());
+        m_ui->treeView->header()->restoreState(settings.value("track_list_state").toByteArray());
+    }
+    m_commandLine = settings.value("command_line").toString();
     settings.endGroup();
+
+    if(settings.value("Proxy/use_proxy", false).toBool())
+        m_proxyUrl = settings.value("Proxy/url").toUrl();
+    else
+        m_proxyUrl.clear();
+
+    m_update = true;
 }
 
 void MainWindow::writeSettings()

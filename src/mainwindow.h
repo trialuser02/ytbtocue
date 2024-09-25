@@ -31,6 +31,7 @@
 
 #include <QMainWindow>
 #include <QProcess>
+#include <QUrl>
 
 namespace Ui {
     class MainWindow;
@@ -59,6 +60,7 @@ private slots:
     void on_aboutAction_triggered();
     void on_aboutQtAction_triggered();
     void on_selectOutDirButton_clicked();
+    void on_settingsAction_triggered();
 
 private:
     void closeEvent(QCloseEvent *) override;
@@ -80,7 +82,9 @@ private:
     CueModel *m_model;
     QString m_title;
     State m_state = Idle;
-    QString m_backend, m_version;
+    bool m_update = false;
+    QString m_backend, m_version, m_commandLine;
+    QUrl m_proxyUrl;
 };
 
 #endif // MAINWINDOW_H
