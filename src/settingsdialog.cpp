@@ -19,6 +19,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     m_ui->portLineEdit->setText(url.port() >= 0 ? QString::number(url.port()) : QString());
     m_ui->userLineEdit->setText(url.userName());
     m_ui->passwordLineEdit->setText(url.password());
+    m_ui->commandLineTextEdit->setPlainText(settings.value("General/command_line_args").toString());
 }
 
 SettingsDialog::~SettingsDialog()
@@ -37,5 +38,6 @@ void SettingsDialog::accept()
     url.setUserName(m_ui->userLineEdit->text());
     url.setPassword(m_ui->passwordLineEdit->text());
     settings.setValue("Proxy/url", url);
+    settings.setValue("General/command_line_args", m_ui->commandLineTextEdit->toPlainText());
     QDialog::accept();
 }

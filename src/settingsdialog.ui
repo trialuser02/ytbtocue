@@ -124,7 +124,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Extra command line arguments:</string>
+      <string>Extra command-line arguments:</string>
      </property>
     </widget>
    </item>

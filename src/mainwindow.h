@@ -83,7 +83,8 @@ private:
     QString m_title;
     State m_state = Idle;
     bool m_update = false;
-    QString m_backend, m_version, m_commandLine;
+    QString m_backend, m_version;
+    QStringList m_commandLineArgs;
     QUrl m_proxyUrl;
 };
 

@@ -208,6 +208,10 @@ void MainWindow::on_downloadButton_clicked()
     if(m_proxyUrl.isValid())
         args << "--proxy" << m_proxyUrl.toString();
 
+    args << m_commandLineArgs;
+
+    qDebug() << args;
+
     m_state = Downloading;
     m_process->start(m_backend, args);
     m_ui->progressBar->setValue(0);
@@ -364,7 +368,8 @@ void MainWindow::readSettings()
         m_ui->outDirLineEdit->setText(settings.value("out_dir", musicLocation).toString());
         m_ui->treeView->header()->restoreState(settings.value("track_list_state").toByteArray());
     }
-    m_commandLine = settings.value("command_line").toString();
+    m_commandLineArgs = settings.value("command_line_args").toString().replace(QChar::LineFeed, QChar::Space)
+            .split(QChar::Space, Qt::SkipEmptyParts);
     settings.endGroup();
 
     if(settings.value("Proxy/use_proxy", false).toBool())
