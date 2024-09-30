@@ -54,7 +54,7 @@
     <message>
         <location filename="../mainwindow.ui" line="321"/>
         <source>URL:</source>
-        <translation>URL:</translation>
+        <translation>Url:</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="331"/>
@@ -109,7 +109,7 @@
     <message>
         <location filename="../mainwindow.ui" line="279"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="363"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../mainwindow.ui" line="378"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>B&amp;ewerken</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="393"/>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../mainwindow.ui" line="398"/>
         <source>About...</source>
-        <translation>Over...</translation>
+        <translation>Over…</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="403"/>
@@ -145,12 +145,12 @@
         <location filename="../mainwindow.ui" line="412"/>
         <location filename="../mainwindow.cpp" line="295"/>
         <source>Save CUE As...</source>
-        <translation>CUE opslaan als...</translation>
+        <translation>CUE opslaan als…</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>In&amp;stellingen</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="88"/>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="326"/>
         <source>This program is intended to download audio albums from &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube&lt;/a&gt;. It downloads audio file using %1 and generates Cue Sheet with metadata.</source>
-        <translation>Met dit programma kun je audio-albums downloaden van &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube.&lt;/a&gt; De audiobestanden worden opgehaald middels %1 en er wordt een cueblad met metagegevens opgesteld.</translation>
+        <translation>Met dit programma kun je muziekalbums downloaden van &lt;a href=&quot;https://www.youtube.com&quot;&gt;YouTube.&lt;/a&gt; De audiobestanden worden opgehaald middels %1 en er wordt een cueblad met metagegevens opgesteld.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="329"/>
@@ -248,47 +248,47 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>YouTube to CUE Converter Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>YouTube-naar-cue-conversie-instellingen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="20"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy inschakelen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Soort proxy:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Host name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Poort:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="101"/>
         <source>User name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="111"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wachtwoord:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Extra command-line arguments:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanvullende opdrachtregelopties:</translation>
     </message>
 </context>
 </TS>

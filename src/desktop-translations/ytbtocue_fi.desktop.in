@@ -7,6 +7,7 @@ Comment=Download album from YouTube and convert to CUE
 
 
 
+
 Exec=ytbtocue
 Icon=emblem-downloads
 Terminal=false
@@ -15,6 +16,6 @@ Categories=Application;Network;Qt;
 
 
 # Translations
-Icon[fi]=tunnus-lataa
 Name[fi]=YouTube - CUE Converter
 Comment[fi]=Lataa albumi YouTubesta ja muunna CUE:ksi
+Icon[fi]=tunnus-lataa

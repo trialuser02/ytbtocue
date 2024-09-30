@@ -124,7 +124,7 @@
     <message>
         <location filename="../mainwindow.ui" line="378"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Muokkaa</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="393"/>
@@ -150,7 +150,7 @@
     <message>
         <location filename="../mainwindow.ui" line="420"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Asetukset</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="88"/>
@@ -200,17 +200,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="106"/>
         <source>%1 MiB | %2 %3 | ETA: %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Mb | %2 %3 | Arvio: %4</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="107"/>
         <source>KiB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>Kt/s</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="107"/>
         <source>MiB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>Mb/s</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="325"/>
@@ -248,47 +248,47 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>YouTube to CUE Converter Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>YouTube - CUE Converter asetukset</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="20"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Välityspalvelin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
+        <translation>Välityspalvelin käyttöön</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyyppi:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Host name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Isäntä:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Portti:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="101"/>
         <source>User name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjänimi:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="111"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Salasana:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Extra command-line arguments:</source>
-        <translation type="unfinished"></translation>
+        <translation>Komentorivin argumentit:</translation>
     </message>
 </context>
 </TS>
