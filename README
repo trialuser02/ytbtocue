@@ -9,9 +9,9 @@ Official home page: https://github.com/trialuser02/ytbtocue
 Requirements:
 
 - GNU Linux or FreeBSD
-- youtube-dl >= 2021.06.60 or yt-dlp >= 2021.09.02
-- qtbase >= 5.10.0
-- qttools >= 5.10.0 (For build only)
+- yt-dlp >= 2024.11.04 or youtube-dl >= 2021.12.17 (latest versions)
+- qtbase >= 5.12.0
+- qttools >= 5.12.0 (For build only)
 
 Installation:
 
