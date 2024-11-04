@@ -60,6 +60,15 @@ public:
         COMMENT,
         FILE
     };
+
+    enum Column
+    {
+        TrackColumn = 0,
+        PerformerColumn,
+        TitleColumn,
+        OffsetColumn
+    };
+
     void setMetaData(MetaDataKey key, const QString &value);
     void clear();
     void removeTrack(int idx);

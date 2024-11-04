@@ -39,7 +39,7 @@ QWidget *TrackListItemDelegate::createEditor(QWidget *parent, const QStyleOption
     QWidget *editor = QStyledItemDelegate::createEditor(parent, option, index);
     QTimeEdit *timeEdit = qobject_cast<QTimeEdit *>(editor);
     if(timeEdit)
-        timeEdit->setDisplayFormat("h:mm:ss");
+        timeEdit->setDisplayFormat(QStringLiteral("h:mm:ss"));
 
     return editor;
 }

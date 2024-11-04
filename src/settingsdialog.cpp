@@ -28,6 +28,7 @@
 
 #include <QIntValidator>
 #include <QSettings>
+#include "utils.h"
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
 
@@ -37,17 +38,17 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     m_ui->setupUi(this);
     m_ui->portLineEdit->setValidator(new QIntValidator(0, 65535, this));
-    m_ui->proxyTypeComboBox->addItems({ "HTTP", "HTTPS", "SOCKS4", "SOCKS4a", "SOCKS5", "SOCKS5h" });
+    m_ui->proxyTypeComboBox->addItems({ u"HTTP"_s, u"HTTPS"_s, u"SOCKS4"_s, u"SOCKS4a"_s, u"SOCKS5"_s, u"SOCKS5h"_s });
     QSettings settings;
-    m_ui->enableProxyCheckBox->setChecked(settings.value("Proxy/use_proxy", false).toBool());
-    QUrl url = settings.value("Proxy/url").toUrl();
+    m_ui->enableProxyCheckBox->setChecked(settings.value("Proxy/use_proxy"_L1, false).toBool());
+    QUrl url = settings.value("Proxy/url"_L1).toUrl();
     int index = m_ui->proxyTypeComboBox->findText(url.scheme(), Qt::MatchFixedString);
     m_ui->proxyTypeComboBox->setCurrentIndex(index);
     m_ui->hostLineEdit->setText(url.host());
     m_ui->portLineEdit->setText(url.port() >= 0 ? QString::number(url.port()) : QString());
     m_ui->userLineEdit->setText(url.userName());
     m_ui->passwordLineEdit->setText(url.password());
-    m_ui->commandLineTextEdit->setPlainText(settings.value("General/command_line_args").toString());
+    m_ui->commandLineTextEdit->setPlainText(settings.value("General/command_line_args"_L1).toString());
 }
 
 SettingsDialog::~SettingsDialog()
@@ -58,14 +59,14 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::accept()
 {
     QSettings settings;
-    settings.setValue("Proxy/use_proxy", m_ui->enableProxyCheckBox->isChecked());
+    settings.setValue("Proxy/use_proxy"_L1, m_ui->enableProxyCheckBox->isChecked());
     QUrl url;
     url.setScheme(m_ui->proxyTypeComboBox->currentText().toLower());
     url.setHost(m_ui->hostLineEdit->text());
     url.setPort(m_ui->portLineEdit->text().toInt());
     url.setUserName(m_ui->userLineEdit->text());
     url.setPassword(m_ui->passwordLineEdit->text());
-    settings.setValue("Proxy/url", url);
-    settings.setValue("General/command_line_args", m_ui->commandLineTextEdit->toPlainText());
+    settings.setValue("Proxy/url"_L1, url);
+    settings.setValue("General/command_line_args"_L1, m_ui->commandLineTextEdit->toPlainText());
     QDialog::accept();
 }

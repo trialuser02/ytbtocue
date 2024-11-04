@@ -39,13 +39,13 @@ QVariant CueModel::headerData(int section, Qt::Orientation orientation, int role
     if(role != Qt::DisplayRole || orientation != Qt::Horizontal)
         return QVariant();
 
-    if(section == 0)
+    if(section == TrackColumn)
         return tr("Track");
-    if(section == 1)
+    if(section == PerformerColumn)
         return tr("Performer");
-    if(section == 2)
+    if(section == TitleColumn)
         return tr("Title");
-    if(section == 3)
+    if(section == OffsetColumn)
         return tr("Offset");
 
     return QString();
@@ -71,15 +71,15 @@ QVariant CueModel::data(const QModelIndex &index, int role) const
     int column = index.column();
     int row = index.row();
 
-    if(column == 0)
+    if(column == TrackColumn)
         return QString::number(row + 1);
-    if(column == 1)
+    if(column == PerformerColumn)
         return m_items[row].performer;
-    if(column == 2)
+    if(column == TitleColumn)
         return m_items[row].title;
-    if(column == 3 && role == Qt::DisplayRole)
+    if(column == OffsetColumn && role == Qt::DisplayRole)
         return Utils::formatDuration(m_items[row].offset);
-    if(column == 3 && role == Qt::EditRole)
+    if(column == OffsetColumn && role == Qt::EditRole)
         return QTime(0, 0).addSecs(m_items[row].offset);
 
     return QVariant();
@@ -93,19 +93,19 @@ bool CueModel::setData(const QModelIndex &index, const QVariant &value, int role
     int row = index.row();
     int column = index.column();
 
-    if(column == 1)
+    if(column == PerformerColumn)
     {
         m_items[row].performer = value.toString();
         emit dataChanged(index, index, { role });
         return true;
     }
-    if(column == 2)
+    if(column == TitleColumn)
     {
         m_items[row].title = value.toString();
         emit dataChanged(index, index, { role });
         return true;
     }
-    if(column == 3)
+    if(column == OffsetColumn)
     {
         QTime time = value.toTime();
         m_items[row].offset = time.hour() * 3600 + time.minute() * 60 + time.second();
@@ -118,7 +118,7 @@ bool CueModel::setData(const QModelIndex &index, const QVariant &value, int role
 Qt::ItemFlags CueModel::flags(const QModelIndex &index) const
 {
     Qt::ItemFlags flags = QAbstractListModel::flags(index);
-    if(index.column() == 1 || index.column() == 2 || index.column() == 3)
+    if(index.column() == PerformerColumn || index.column() == TitleColumn || index.column() == OffsetColumn)
         flags |= Qt::ItemIsEditable;
 
     return flags;
@@ -180,26 +180,26 @@ QByteArray CueModel::generate()
 {
     QString out;
     if(!m_metaData.value(GENRE).isEmpty())
-        out += QString("REM GENRE \"%1\"\n").arg(m_metaData.value(GENRE));
+        out += QStringLiteral("REM GENRE \"%1\"\n").arg(m_metaData.value(GENRE));
     if(!m_metaData.value(DATE).isEmpty())
-        out += QString("REM DATE %1\n").arg(m_metaData.value(DATE));
+        out += QStringLiteral("REM DATE %1\n").arg(m_metaData.value(DATE));
     if(!m_metaData.value(COMMENT).isEmpty())
-        out += QString("REM COMMENT \"%1\"\n").arg(m_metaData.value(COMMENT));
+        out += QStringLiteral("REM COMMENT \"%1\"\n").arg(m_metaData.value(COMMENT));
     if(!m_metaData.value(PERFORMER).isEmpty())
-        out += QString("PERFORMER \"%1\"\n").arg(m_metaData.value(PERFORMER));
+        out += QStringLiteral("PERFORMER \"%1\"\n").arg(m_metaData.value(PERFORMER));
     if(!m_metaData.value(TITLE).isEmpty())
-        out += QString("TITLE \"%1\"\n").arg(m_metaData.value(TITLE));
+        out += QStringLiteral("TITLE \"%1\"\n").arg(m_metaData.value(TITLE));
     if(!m_metaData.value(FILE).isEmpty())
-        out += QString("FILE \"%1\" WAVE\n").arg(m_metaData.value(FILE));
+        out += QStringLiteral("FILE \"%1\" WAVE\n").arg(m_metaData.value(FILE));
 
     for(int i = 0; i < m_items.count(); ++i)
     {
-        out += QString("  TRACK %1 AUDIO\n").arg(i + 1, 2, 10, QChar('0'));
-        out += QString("    TITLE \"%1\"\n").arg(m_items[i].title);
+        out += QStringLiteral("  TRACK %1 AUDIO\n").arg(i + 1, 2, 10, QLatin1Char('0'));
+        out += QStringLiteral("    TITLE \"%1\"\n").arg(m_items[i].title);
         if(!m_items[i].performer.isEmpty())
-            out += QString("    PERFORMER \"%1\"\n").arg(m_items[i].performer);
-        out += QString("    INDEX 01 %1:%2:00\n").arg(m_items[i].offset / 60,  2, 10, QChar('0'))
-                .arg(m_items[i].offset % 60,  2, 10, QChar('0'));
+            out += QStringLiteral("    PERFORMER \"%1\"\n").arg(m_items[i].performer);
+        out += QStringLiteral("    INDEX 01 %1:%2:00\n").arg(m_items[i].offset / 60,  2, 10, QLatin1Char('0'))
+                .arg(m_items[i].offset % 60,  2, 10, QLatin1Char('0'));
     }
     return out.toUtf8();
 }
