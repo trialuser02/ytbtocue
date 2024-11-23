@@ -29,3 +29,8 @@ Version 0.4
 Version 0.5
 * fixed latest yt-dlp output parsing
 * updated Korean translation (Jung Hee Lee)
+
+Version 0.6
+* added proxy settings
+* added feature to add extra command-line arguments
+* updated Russian translation
